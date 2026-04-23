@@ -1,0 +1,883 @@
+=== file count breakdown ===
+   1 .gitignore
+ 311 photos
+ 110 voice_notes
+
+=== commit ===
+ delete mode 100644 voice_notes/voice_like_90_62.m4a
+ delete mode 100644 voice_notes/voice_like_98_102.m4a
+ delete mode 100644 voice_notes/voice_like_98_5.m4a
+ delete mode 100644 voice_notes/voice_like_98_62.m4a
+ delete mode 100644 voice_notes/voice_like_98_95.m4a
+
+=== merge into development ===
+Switched to branch 'development'
+Your branch is up to date with 'origin/development'.
+Merge made by the 'ort' strategy.
+ .gitignore                        |   5 +++++
+ photos/photoface_1.jpg            | Bin 4896 -> 0 bytes
+ photos/photoface_10.jpg           | Bin 6336 -> 0 bytes
+ photos/photoface_100.jpg          | Bin 6380 -> 0 bytes
+ photos/photoface_103.jpg          | Bin 236014 -> 0 bytes
+ photos/photoface_11.jpg           | Bin 5270 -> 0 bytes
+ photos/photoface_115.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_116.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_117.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_118.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_119.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_12.jpg           | Bin 5024 -> 0 bytes
+ photos/photoface_120.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_121.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_122.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_123.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_13.jpg           | Bin 4611 -> 0 bytes
+ photos/photoface_14.jpg           | Bin 4751 -> 0 bytes
+ photos/photoface_15.jpg           | Bin 4896 -> 0 bytes
+ photos/photoface_16.jpg           | Bin 3747 -> 0 bytes
+ photos/photoface_17.jpg           | Bin 3844 -> 0 bytes
+ photos/photoface_18.jpg           | Bin 5709 -> 0 bytes
+ photos/photoface_19.jpg           | Bin 5512 -> 0 bytes
+ photos/photoface_2.jpg            | Bin 11329 -> 0 bytes
+ photos/photoface_20.jpg           | Bin 5080 -> 0 bytes
+ photos/photoface_202.jpg          | Bin 6593 -> 0 bytes
+ photos/photoface_203.jpg          | Bin 5352 -> 0 bytes
+ photos/photoface_204.jpg          | Bin 3473 -> 0 bytes
+ photos/photoface_205.jpg          | Bin 3198 -> 0 bytes
+ photos/photoface_206.jpg          | Bin 5445 -> 0 bytes
+ photos/photoface_207.jpg          | Bin 7113 -> 0 bytes
+ photos/photoface_208.jpg          | Bin 4542 -> 0 bytes
+ photos/photoface_209.jpg          | Bin 4542 -> 0 bytes
+ photos/photoface_21.jpg           | Bin 6236 -> 0 bytes
+ photos/photoface_210.jpg          | Bin 4688 -> 0 bytes
+ photos/photoface_211.jpg          | Bin 5433 -> 0 bytes
+ photos/photoface_212.jpg          | Bin 4534 -> 0 bytes
+ photos/photoface_213.jpg          | Bin 4610 -> 0 bytes
+ photos/photoface_214.jpg          | Bin 4859 -> 0 bytes
+ photos/photoface_215.jpg          | Bin 4398 -> 0 bytes
+ photos/photoface_216.jpg          | Bin 5109 -> 0 bytes
+ photos/photoface_217.jpg          | Bin 4726 -> 0 bytes
+ photos/photoface_218.jpg          | Bin 3614 -> 0 bytes
+ photos/photoface_219.jpg          | Bin 4857 -> 0 bytes
+ photos/photoface_22.jpg           | Bin 4291 -> 0 bytes
+ photos/photoface_220.jpg          | Bin 4911 -> 0 bytes
+ photos/photoface_221.jpg          | Bin 4612 -> 0 bytes
+ photos/photoface_222.jpg          | Bin 4035 -> 0 bytes
+ photos/photoface_223.jpg          | Bin 3747 -> 0 bytes
+ photos/photoface_224.jpg          | Bin 3295 -> 0 bytes
+ photos/photoface_225.jpg          | Bin 6460 -> 0 bytes
+ photos/photoface_226.jpg          | Bin 3249 -> 0 bytes
+ photos/photoface_227.jpg          | Bin 4356 -> 0 bytes
+ photos/photoface_228.jpg          | Bin 4611 -> 0 bytes
+ photos/photoface_229.jpg          | Bin 3617 -> 0 bytes
+ photos/photoface_23.jpg           | Bin 6293 -> 0 bytes
+ photos/photoface_230.jpg          | Bin 3617 -> 0 bytes
+ photos/photoface_231.jpg          | Bin 5375 -> 0 bytes
+ photos/photoface_232.jpg          | Bin 6292 -> 0 bytes
+ photos/photoface_233.jpg          | Bin 5810 -> 0 bytes
+ photos/photoface_234.jpg          | Bin 5160 -> 0 bytes
+ photos/photoface_235.jpg          | Bin 5084 -> 0 bytes
+ photos/photoface_236.jpg          | Bin 3473 -> 0 bytes
+ photos/photoface_237.jpg          | Bin 4410 -> 0 bytes
+ photos/photoface_238.jpg          | Bin 7113 -> 0 bytes
+ photos/photoface_239.jpg          | Bin 5160 -> 0 bytes
+ photos/photoface_24.jpg           | Bin 4600 -> 0 bytes
+ photos/photoface_240.jpg          | Bin 3249 -> 0 bytes
+ photos/photoface_241.jpg          | Bin 6926 -> 0 bytes
+ photos/photoface_242.jpg          | Bin 2438 -> 0 bytes
+ photos/photoface_243.jpg          | Bin 3428 -> 0 bytes
+ photos/photoface_244.jpg          | Bin 5147 -> 0 bytes
+ photos/photoface_245.jpg          | Bin 5081 -> 0 bytes
+ photos/photoface_246.jpg          | Bin 4454 -> 0 bytes
+ photos/photoface_247.jpg          | Bin 2967 -> 0 bytes
+ photos/photoface_248.jpg          | Bin 11745 -> 0 bytes
+ photos/photoface_249.jpg          | Bin 5147 -> 0 bytes
+ photos/photoface_25.jpg           | Bin 5782 -> 0 bytes
+ photos/photoface_250.jpg          | Bin 3912 -> 0 bytes
+ photos/photoface_251.jpg          | Bin 4610 -> 0 bytes
+ photos/photoface_252.jpg          | Bin 4874 -> 0 bytes
+ photos/photoface_253.jpg          | Bin 6947 -> 0 bytes
+ photos/photoface_254.jpg          | Bin 5488 -> 0 bytes
+ photos/photoface_255.jpg          | Bin 4440 -> 0 bytes
+ photos/photoface_256.jpg          | Bin 3912 -> 0 bytes
+ photos/photoface_257.jpg          | Bin 4071 -> 0 bytes
+ photos/photoface_258.jpg          | Bin 4344 -> 0 bytes
+ photos/photoface_259.jpg          | Bin 5900 -> 0 bytes
+ photos/photoface_26.jpg           | Bin 4440 -> 0 bytes
+ photos/photoface_260.jpg          | Bin 5157 -> 0 bytes
+ photos/photoface_261.jpg          | Bin 5897 -> 0 bytes
+ photos/photoface_262.jpg          | Bin 4771 -> 0 bytes
+ photos/photoface_263.jpg          | Bin 5270 -> 0 bytes
+ photos/photoface_264.jpg          | Bin 3767 -> 0 bytes
+ photos/photoface_265.jpg          | Bin 3935 -> 0 bytes
+ photos/photoface_266.jpg          | Bin 3321 -> 0 bytes
+ photos/photoface_267.jpg          | Bin 3249 -> 0 bytes
+ photos/photoface_268.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_269.jpg          | Bin 5554 -> 0 bytes
+ photos/photoface_27.jpg           | Bin 4349 -> 0 bytes
+ photos/photoface_270.jpg          | Bin 5378 -> 0 bytes
+ photos/photoface_271.jpg          | Bin 6336 -> 0 bytes
+ photos/photoface_272.jpg          | Bin 5485 -> 0 bytes
+ photos/photoface_273.jpg          | Bin 5615 -> 0 bytes
+ photos/photoface_274.jpg          | Bin 5093 -> 0 bytes
+ photos/photoface_275.jpg          | Bin 5422 -> 0 bytes
+ photos/photoface_276.jpg          | Bin 4356 -> 0 bytes
+ photos/photoface_277.jpg          | Bin 4440 -> 0 bytes
+ photos/photoface_278.jpg          | Bin 6096 -> 0 bytes
+ photos/photoface_279.jpg          | Bin 3835 -> 0 bytes
+ photos/photoface_28.jpg           | Bin 5080 -> 0 bytes
+ photos/photoface_280.jpg          | Bin 11329 -> 0 bytes
+ photos/photoface_281.jpg          | Bin 5795 -> 0 bytes
+ photos/photoface_282.jpg          | Bin 4291 -> 0 bytes
+ photos/photoface_283.jpg          | Bin 4922 -> 0 bytes
+ photos/photoface_284.jpg          | Bin 5160 -> 0 bytes
+ photos/photoface_285.jpg          | Bin 5422 -> 0 bytes
+ photos/photoface_286.jpg          | Bin 5485 -> 0 bytes
+ photos/photoface_287.jpg          | Bin 6492 -> 0 bytes
+ photos/photoface_288.jpg          | Bin 3428 -> 0 bytes
+ photos/photoface_289.jpg          | Bin 4911 -> 0 bytes
+ photos/photoface_29.jpg           | Bin 2843 -> 0 bytes
+ photos/photoface_290.jpg          | Bin 5004 -> 0 bytes
+ photos/photoface_291.jpg          | Bin 4071 -> 0 bytes
+ photos/photoface_292.jpg          | Bin 4398 -> 0 bytes
+ photos/photoface_293.jpg          | Bin 5216 -> 0 bytes
+ photos/photoface_294.jpg          | Bin 4600 -> 0 bytes
+ photos/photoface_295.jpg          | Bin 4611 -> 0 bytes
+ photos/photoface_296.jpg          | Bin 4454 -> 0 bytes
+ photos/photoface_297.jpg          | Bin 6947 -> 0 bytes
+ photos/photoface_298.jpg          | Bin 5084 -> 0 bytes
+ photos/photoface_299.jpg          | Bin 5093 -> 0 bytes
+ photos/photoface_3.jpg            | Bin 6336 -> 0 bytes
+ photos/photoface_30.jpg           | Bin 4743 -> 0 bytes
+ photos/photoface_300.jpg          | Bin 4454 -> 0 bytes
+ photos/photoface_302.jpg          | Bin 6926 -> 0 bytes
+ photos/photoface_303.jpg          | Bin 4922 -> 0 bytes
+ photos/photoface_304.jpg          | Bin 5616 -> 0 bytes
+ photos/photoface_305.jpg          | Bin 4067 -> 0 bytes
+ photos/photoface_306.jpg          | Bin 3295 -> 0 bytes
+ photos/photoface_307.jpg          | Bin 3733 -> 0 bytes
+ photos/photoface_308.jpg          | Bin 4051 -> 0 bytes
+ photos/photoface_309.jpg          | Bin 3767 -> 0 bytes
+ photos/photoface_31.jpg           | Bin 6460 -> 0 bytes
+ photos/photoface_310.jpg          | Bin 3747 -> 0 bytes
+ photos/photoface_311.jpg          | Bin 5615 -> 0 bytes
+ photos/photoface_312.jpg          | Bin 5907 -> 0 bytes
+ photos/photoface_313.jpg          | Bin 5157 -> 0 bytes
+ photos/photoface_314.jpg          | Bin 6336 -> 0 bytes
+ photos/photoface_315.jpg          | Bin 3629 -> 0 bytes
+ photos/photoface_316.jpg          | Bin 3617 -> 0 bytes
+ photos/photoface_317.jpg          | Bin 5276 -> 0 bytes
+ photos/photoface_318.jpg          | Bin 5433 -> 0 bytes
+ photos/photoface_319.jpg          | Bin 3767 -> 0 bytes
+ photos/photoface_32.jpg           | Bin 5216 -> 0 bytes
+ photos/photoface_320.jpg          | Bin 5157 -> 0 bytes
+ photos/photoface_321.jpg          | Bin 4534 -> 0 bytes
+ photos/photoface_322.jpg          | Bin 5522 -> 0 bytes
+ photos/photoface_323.jpg          | Bin 4743 -> 0 bytes
+ photos/photoface_324.jpg          | Bin 5314 -> 0 bytes
+ photos/photoface_325.jpg          | Bin 4442 -> 0 bytes
+ photos/photoface_326.jpg          | Bin 5900 -> 0 bytes
+ photos/photoface_327.jpg          | Bin 5900 -> 0 bytes
+ photos/photoface_328.jpg          | Bin 4817 -> 0 bytes
+ photos/photoface_329.jpg          | Bin 4410 -> 0 bytes
+ photos/photoface_33.jpg           | Bin 3341 -> 0 bytes
+ photos/photoface_330.jpg          | Bin 5433 -> 0 bytes
+ photos/photoface_331.jpg          | Bin 6888 -> 0 bytes
+ photos/photoface_332.jpg          | Bin 9975 -> 0 bytes
+ photos/photoface_333.jpg          | Bin 5160 -> 0 bytes
+ photos/photoface_334.jpg          | Bin 3740 -> 0 bytes
+ photos/photoface_335.jpg          | Bin 5071 -> 0 bytes
+ photos/photoface_336.jpg          | Bin 3473 -> 0 bytes
+ photos/photoface_337.jpg          | Bin 3767 -> 0 bytes
+ photos/photoface_338.jpg          | Bin 5084 -> 0 bytes
+ photos/photoface_339.jpg          | Bin 3629 -> 0 bytes
+ photos/photoface_34.jpg           | Bin 5512 -> 0 bytes
+ photos/photoface_340.jpg          | Bin 5854 -> 0 bytes
+ photos/photoface_341.jpg          | Bin 4871 -> 0 bytes
+ photos/photoface_342.jpg          | Bin 5004 -> 0 bytes
+ photos/photoface_343.jpg          | Bin 5709 -> 0 bytes
+ photos/photoface_344.jpg          | Bin 5160 -> 0 bytes
+ photos/photoface_345.jpg          | Bin 6948 -> 0 bytes
+ photos/photoface_346.jpg          | Bin 4922 -> 0 bytes
+ photos/photoface_347.jpg          | Bin 3835 -> 0 bytes
+ photos/photoface_348.jpg          | Bin 5616 -> 0 bytes
+ photos/photoface_349.jpg          | Bin 4753 -> 0 bytes
+ photos/photoface_35.jpg           | Bin 4564 -> 0 bytes
+ photos/photoface_350.jpg          | Bin 3428 -> 0 bytes
+ photos/photoface_351.jpg          | Bin 2438 -> 0 bytes
+ photos/photoface_352.jpg          | Bin 3805 -> 0 bytes
+ photos/photoface_353.jpg          | Bin 5810 -> 0 bytes
+ photos/photoface_354.jpg          | Bin 6236 -> 0 bytes
+ photos/photoface_355.jpg          | Bin 5147 -> 0 bytes
+ photos/photoface_356.jpg          | Bin 10528 -> 0 bytes
+ photos/photoface_357.jpg          | Bin 5071 -> 0 bytes
+ photos/photoface_358.jpg          | Bin 3740 -> 0 bytes
+ photos/photoface_359.jpg          | Bin 5160 -> 0 bytes
+ photos/photoface_36.jpg           | Bin 4051 -> 0 bytes
+ photos/photoface_360.jpg          | Bin 5900 -> 0 bytes
+ photos/photoface_361.jpg          | Bin 3614 -> 0 bytes
+ photos/photoface_362.jpg          | Bin 4051 -> 0 bytes
+ photos/photoface_363.jpg          | Bin 4256 -> 0 bytes
+ photos/photoface_364.jpg          | Bin 6236 -> 0 bytes
+ photos/photoface_365.jpg          | Bin 4515 -> 0 bytes
+ photos/photoface_366.jpg          | Bin 3249 -> 0 bytes
+ photos/photoface_367.jpg          | Bin 6790 -> 0 bytes
+ photos/photoface_368.jpg          | Bin 25892 -> 0 bytes
+ photos/photoface_369.jpg          | Bin 4771 -> 0 bytes
+ photos/photoface_37.jpg           | Bin 4181 -> 0 bytes
+ photos/photoface_370.jpg          | Bin 11329 -> 0 bytes
+ photos/photoface_371.jpg          | Bin 5488 -> 0 bytes
+ photos/photoface_372.jpg          | Bin 3901 -> 0 bytes
+ photos/photoface_373.jpg          | Bin 3539 -> 0 bytes
+ photos/photoface_374.jpg          | Bin 4440 -> 0 bytes
+ photos/photoface_375.jpg          | Bin 5093 -> 0 bytes
+ photos/photoface_376.jpg          | Bin 11329 -> 0 bytes
+ photos/photoface_377.jpg          | Bin 4515 -> 0 bytes
+ photos/photoface_378.jpg          | Bin 3198 -> 0 bytes
+ photos/photoface_379.jpg          | Bin 5616 -> 0 bytes
+ photos/photoface_38.jpg           | Bin 5242 -> 0 bytes
+ photos/photoface_380.jpg          | Bin 5615 -> 0 bytes
+ photos/photoface_381.jpg          | Bin 4752 -> 0 bytes
+ photos/photoface_382.jpg          | Bin 5488 -> 0 bytes
+ photos/photoface_383.jpg          | Bin 5616 -> 0 bytes
+ photos/photoface_384.jpg          | Bin 6361 -> 0 bytes
+ photos/photoface_385.jpg          | Bin 3940 -> 0 bytes
+ photos/photoface_386.jpg          | Bin 6096 -> 0 bytes
+ photos/photoface_387.jpg          | Bin 4082 -> 0 bytes
+ photos/photoface_388.jpg          | Bin 3598 -> 0 bytes
+ photos/photoface_389.jpg          | Bin 4610 -> 0 bytes
+ photos/photoface_39.jpg           | Bin 4965 -> 0 bytes
+ photos/photoface_390.jpg          | Bin 4256 -> 0 bytes
+ photos/photoface_391.jpg          | Bin 6926 -> 0 bytes
+ photos/photoface_392.jpg          | Bin 4600 -> 0 bytes
+ photos/photoface_393.jpg          | Bin 4965 -> 0 bytes
+ photos/photoface_394.jpg          | Bin 5216 -> 0 bytes
+ photos/photoface_395.jpg          | Bin 4859 -> 0 bytes
+ photos/photoface_396.jpg          | Bin 4770 -> 0 bytes
+ photos/photoface_397.jpg          | Bin 3208 -> 0 bytes
+ photos/photoface_398.jpg          | Bin 3198 -> 0 bytes
+ photos/photoface_399.jpg          | Bin 4911 -> 0 bytes
+ photos/photoface_4.jpg            | Bin 5616 -> 0 bytes
+ photos/photoface_40.jpg           | Bin 4611 -> 0 bytes
+ photos/photoface_400.jpg          | Bin 2799 -> 0 bytes
+ photos/photoface_401.jpg          | Bin 3805 -> 0 bytes
+ photos/photoface_41.jpg           | Bin 4082 -> 0 bytes
+ photos/photoface_42.jpg           | Bin 6322 -> 0 bytes
+ photos/photoface_43.jpg           | Bin 6236 -> 0 bytes
+ photos/photoface_44.jpg           | Bin 4515 -> 0 bytes
+ photos/photoface_45.jpg           | Bin 4067 -> 0 bytes
+ photos/photoface_46.jpg           | Bin 5836 -> 0 bytes
+ photos/photoface_47.jpg           | Bin 5071 -> 0 bytes
+ photos/photoface_48.jpg           | Bin 4492 -> 0 bytes
+ photos/photoface_49.jpg           | Bin 7113 -> 0 bytes
+ photos/photoface_5.jpg            | Bin 5081 -> 0 bytes
+ photos/photoface_50.jpg           | Bin 4701 -> 0 bytes
+ photos/photoface_51.jpg           | Bin 7113 -> 0 bytes
+ photos/photoface_52.jpg           | Bin 5874 -> 0 bytes
+ photos/photoface_53.jpg           | Bin 4513 -> 0 bytes
+ photos/photoface_54.jpg           | Bin 5352 -> 0 bytes
+ photos/photoface_55.jpg           | Bin 5084 -> 0 bytes
+ photos/photoface_56.jpg           | Bin 3473 -> 0 bytes
+ photos/photoface_57.jpg           | Bin 5084 -> 0 bytes
+ photos/photoface_58.jpg           | Bin 6790 -> 0 bytes
+ photos/photoface_59.jpg           | Bin 4834 -> 0 bytes
+ photos/photoface_6.jpg            | Bin 6336 -> 0 bytes
+ photos/photoface_60.jpg           | Bin 6049 -> 0 bytes
+ photos/photoface_61.jpg           | Bin 5080 -> 0 bytes
+ photos/photoface_62.jpg           | Bin 2799 -> 0 bytes
+ photos/photoface_63.jpg           | Bin 5795 -> 0 bytes
+ photos/photoface_64.jpg           | Bin 4035 -> 0 bytes
+ photos/photoface_65.jpg           | Bin 3935 -> 0 bytes
+ photos/photoface_66.jpg           | Bin 5445 -> 0 bytes
+ photos/photoface_67.jpg           | Bin 3805 -> 0 bytes
+ photos/photoface_68.jpg           | Bin 5160 -> 0 bytes
+ photos/photoface_69.jpg           | Bin 2799 -> 0 bytes
+ photos/photoface_7.jpg            | Bin 6380 -> 0 bytes
+ photos/photoface_70.jpg           | Bin 5433 -> 0 bytes
+ photos/photoface_71.jpg           | Bin 4751 -> 0 bytes
+ photos/photoface_72.jpg           | Bin 2438 -> 0 bytes
+ photos/photoface_73.jpg           | Bin 3460 -> 0 bytes
+ photos/photoface_74.jpg           | Bin 3702 -> 0 bytes
+ photos/photoface_75.jpg           | Bin 6042 -> 0 bytes
+ photos/photoface_76.jpg           | Bin 6361 -> 0 bytes
+ photos/photoface_77.jpg           | Bin 5084 -> 0 bytes
+ photos/photoface_78.jpg           | Bin 5160 -> 0 bytes
+ photos/photoface_79.jpg           | Bin 4857 -> 0 bytes
+ photos/photoface_8.jpg            | Bin 3844 -> 0 bytes
+ photos/photoface_80.jpg           | Bin 7113 -> 0 bytes
+ photos/photoface_81.jpg           | Bin 6042 -> 0 bytes
+ photos/photoface_82.jpg           | Bin 9378 -> 0 bytes
+ photos/photoface_83.jpg           | Bin 2843 -> 0 bytes
+ photos/photoface_84.jpg           | Bin 4896 -> 0 bytes
+ photos/photoface_85.jpg           | Bin 11745 -> 0 bytes
+ photos/photoface_86.jpg           | Bin 5897 -> 0 bytes
+ photos/photoface_87.jpg           | Bin 3705 -> 0 bytes
+ photos/photoface_88.jpg           | Bin 5973 -> 0 bytes
+ photos/photoface_89.jpg           | Bin 5147 -> 0 bytes
+ photos/photoface_9.jpg            | Bin 6741 -> 0 bytes
+ photos/photoface_90.jpg           | Bin 23707 -> 0 bytes
+ photos/photoface_91.jpg           | Bin 4254 -> 0 bytes
+ photos/photoface_92.jpg           | Bin 5080 -> 0 bytes
+ photos/photoface_93.jpg           | Bin 6336 -> 0 bytes
+ photos/photoface_94.jpg           | Bin 5836 -> 0 bytes
+ photos/photoface_95.jpg           | Bin 5616 -> 0 bytes
+ photos/photoface_96.jpg           | Bin 4344 -> 0 bytes
+ photos/photoface_97.jpg           | Bin 5084 -> 0 bytes
+ photos/photoface_98.jpg           | Bin 4701 -> 0 bytes
+ photos/photoface_99.jpg           | Bin 6947 -> 0 bytes
+ photos/sundar_test.jpg            |  41 --------------------------------------
+ photos/sundar_test2.jpg           | Bin 236014 -> 0 bytes
+ voice_notes/like_102_10.m4a       | Bin 9006 -> 0 bytes
+ voice_notes/like_102_18.m4a       | Bin 8698 -> 0 bytes
+ voice_notes/like_102_2.m4a        | Bin 9893 -> 0 bytes
+ voice_notes/like_102_20.m4a       | Bin 5857 -> 0 bytes
+ voice_notes/like_103_10.m4a       | Bin 7160 -> 0 bytes
+ voice_notes/like_103_11.m4a       | Bin 5857 -> 0 bytes
+ voice_notes/like_103_16.m4a       | Bin 5857 -> 0 bytes
+ voice_notes/like_103_18.m4a       | Bin 6418 -> 0 bytes
+ voice_notes/like_103_2.m4a        | Bin 5365 -> 0 bytes
+ voice_notes/like_103_20.m4a       | Bin 6123 -> 0 bytes
+ voice_notes/like_103_26.m4a       | Bin 5857 -> 0 bytes
+ voice_notes/like_103_3.m4a        | Bin 5365 -> 0 bytes
+ voice_notes/like_103_30.m4a       | Bin 6123 -> 0 bytes
+ voice_notes/like_103_4.m4a        | Bin 5857 -> 0 bytes
+ voice_notes/like_103_43.m4a       | Bin 6123 -> 0 bytes
+ voice_notes/like_11_10.m4a        | Bin 6123 -> 0 bytes
+ voice_notes/like_11_14.m4a        | Bin 7930 -> 0 bytes
+ voice_notes/like_11_16.m4a        | Bin 5589 -> 0 bytes
+ voice_notes/like_11_17.m4a        | Bin 5365 -> 0 bytes
+ voice_notes/like_11_18.m4a        | Bin 5589 -> 0 bytes
+ voice_notes/like_11_2.m4a         | Bin 6123 -> 0 bytes
+ voice_notes/like_11_20.m4a        | Bin 5365 -> 0 bytes
+ voice_notes/like_11_28.m4a        | Bin 6418 -> 0 bytes
+ voice_notes/like_11_29.m4a        | Bin 7930 -> 0 bytes
+ voice_notes/like_11_3.m4a         | Bin 6418 -> 0 bytes
+ voice_notes/like_11_30.m4a        | Bin 12743 -> 0 bytes
+ voice_notes/like_11_31.m4a        | Bin 5589 -> 0 bytes
+ voice_notes/like_11_32.m4a        | Bin 5589 -> 0 bytes
+ voice_notes/like_11_35.m4a        | Bin 7160 -> 0 bytes
+ voice_notes/like_11_38.m4a        | Bin 6577 -> 0 bytes
+ voice_notes/like_11_4.m4a         | Bin 7689 -> 0 bytes
+ voice_notes/like_11_5.m4a         | Bin 8224 -> 0 bytes
+ voice_notes/like_201_101.m4a      | Bin 6123 -> 0 bytes
+ voice_notes/like_201_102.m4a      | Bin 5365 -> 0 bytes
+ voice_notes/like_201_107.m4a      | Bin 5365 -> 0 bytes
+ voice_notes/like_201_117.m4a      | Bin 6418 -> 0 bytes
+ voice_notes/like_201_118.m4a      | Bin 5365 -> 0 bytes
+ voice_notes/like_201_144.m4a      | Bin 6577 -> 0 bytes
+ voice_notes/like_201_145.m4a      | Bin 8698 -> 0 bytes
+ voice_notes/like_201_146.m4a      | Bin 5857 -> 0 bytes
+ voice_notes/like_201_148.m4a      | Bin 5122 -> 0 bytes
+ voice_notes/like_201_158.m4a      | Bin 5857 -> 0 bytes
+ voice_notes/like_201_165.m4a      | Bin 5857 -> 0 bytes
+ voice_notes/like_301_10.m4a       | Bin 5122 -> 0 bytes
+ voice_notes/like_301_11.m4a       | Bin 5365 -> 0 bytes
+ voice_notes/like_301_7.m4a        | Bin 66815 -> 0 bytes
+ voice_notes/like_301_8.m4a        | Bin 5857 -> 0 bytes
+ voice_notes/like_301_9.m4a        | Bin 5857 -> 0 bytes
+ voice_notes/voice_like_102_1.m4a  | Bin 19996 -> 0 bytes
+ voice_notes/voice_like_102_10.m4a | Bin 17527 -> 0 bytes
+ voice_notes/voice_like_102_11.m4a | Bin 18543 -> 0 bytes
+ voice_notes/voice_like_102_17.m4a | Bin 19976 -> 0 bytes
+ voice_notes/voice_like_102_20.m4a | Bin 17135 -> 0 bytes
+ voice_notes/voice_like_102_29.m4a | Bin 18897 -> 0 bytes
+ voice_notes/voice_like_102_31.m4a | Bin 22093 -> 0 bytes
+ voice_notes/voice_like_102_35.m4a | Bin 20953 -> 0 bytes
+ voice_notes/voice_like_102_4.m4a  | Bin 19222 -> 0 bytes
+ voice_notes/voice_like_102_69.m4a | Bin 18405 -> 0 bytes
+ voice_notes/voice_like_102_72.m4a | Bin 21645 -> 0 bytes
+ voice_notes/voice_like_102_74.m4a | Bin 17764 -> 0 bytes
+ voice_notes/voice_like_17_102.m4a | Bin 12500 -> 0 bytes
+ voice_notes/voice_like_17_37.m4a  | Bin 16626 -> 0 bytes
+ voice_notes/voice_like_17_50.m4a  | Bin 19827 -> 0 bytes
+ voice_notes/voice_like_17_67.m4a  | Bin 20093 -> 0 bytes
+ voice_notes/voice_like_17_85.m4a  | Bin 17905 -> 0 bytes
+ voice_notes/voice_like_28_102.m4a | Bin 11629 -> 0 bytes
+ voice_notes/voice_like_28_22.m4a  | Bin 19074 -> 0 bytes
+ voice_notes/voice_like_28_47.m4a  | Bin 18079 -> 0 bytes
+ voice_notes/voice_like_28_91.m4a  | Bin 19622 -> 0 bytes
+ voice_notes/voice_like_30_50.m4a  | Bin 17783 -> 0 bytes
+ voice_notes/voice_like_30_52.m4a  | Bin 20314 -> 0 bytes
+ voice_notes/voice_like_30_56.m4a  | Bin 20333 -> 0 bytes
+ voice_notes/voice_like_30_67.m4a  | Bin 16533 -> 0 bytes
+ voice_notes/voice_like_30_91.m4a  | Bin 18833 -> 0 bytes
+ voice_notes/voice_like_30_94.m4a  | Bin 21946 -> 0 bytes
+ voice_notes/voice_like_41_102.m4a | Bin 14841 -> 0 bytes
+ voice_notes/voice_like_41_28.m4a  | Bin 22653 -> 0 bytes
+ voice_notes/voice_like_41_4.m4a   | Bin 17336 -> 0 bytes
+ voice_notes/voice_like_41_44.m4a  | Bin 20782 -> 0 bytes
+ voice_notes/voice_like_41_47.m4a  | Bin 18079 -> 0 bytes
+ voice_notes/voice_like_41_51.m4a  | Bin 18272 -> 0 bytes
+ voice_notes/voice_like_41_54.m4a  | Bin 21502 -> 0 bytes
+ voice_notes/voice_like_65_102.m4a | Bin 13063 -> 0 bytes
+ voice_notes/voice_like_65_28.m4a  | Bin 18655 -> 0 bytes
+ voice_notes/voice_like_65_50.m4a  | Bin 16613 -> 0 bytes
+ voice_notes/voice_like_69_102.m4a | Bin 14323 -> 0 bytes
+ voice_notes/voice_like_69_28.m4a  | Bin 17454 -> 0 bytes
+ voice_notes/voice_like_69_37.m4a  | Bin 20543 -> 0 bytes
+ voice_notes/voice_like_69_95.m4a  | Bin 19693 -> 0 bytes
+ voice_notes/voice_like_70_100.m4a | Bin 24207 -> 0 bytes
+ voice_notes/voice_like_70_102.m4a | Bin 11840 -> 0 bytes
+ voice_notes/voice_like_70_11.m4a  | Bin 21148 -> 0 bytes
+ voice_notes/voice_like_70_5.m4a   | Bin 19470 -> 0 bytes
+ voice_notes/voice_like_70_91.m4a  | Bin 17331 -> 0 bytes
+ voice_notes/voice_like_74_102.m4a | Bin 11334 -> 0 bytes
+ voice_notes/voice_like_74_16.m4a  | Bin 22142 -> 0 bytes
+ voice_notes/voice_like_74_22.m4a  | Bin 17844 -> 0 bytes
+ voice_notes/voice_like_74_63.m4a  | Bin 18737 -> 0 bytes
+ voice_notes/voice_like_74_68.m4a  | Bin 18618 -> 0 bytes
+ voice_notes/voice_like_74_91.m4a  | Bin 22239 -> 0 bytes
+ voice_notes/voice_like_90_102.m4a | Bin 15256 -> 0 bytes
+ voice_notes/voice_like_90_17.m4a  | Bin 17962 -> 0 bytes
+ voice_notes/voice_like_90_37.m4a  | Bin 19608 -> 0 bytes
+ voice_notes/voice_like_90_44.m4a  | Bin 18585 -> 0 bytes
+ voice_notes/voice_like_90_47.m4a  | Bin 16959 -> 0 bytes
+ voice_notes/voice_like_90_62.m4a  | Bin 20013 -> 0 bytes
+ voice_notes/voice_like_98_102.m4a | Bin 13753 -> 0 bytes
+ voice_notes/voice_like_98_5.m4a   | Bin 20954 -> 0 bytes
+ voice_notes/voice_like_98_62.m4a  | Bin 20013 -> 0 bytes
+ voice_notes/voice_like_98_95.m4a  | Bin 21951 -> 0 bytes
+ 422 files changed, 5 insertions(+), 41 deletions(-)
+ delete mode 100644 photos/photoface_1.jpg
+ delete mode 100644 photos/photoface_10.jpg
+ delete mode 100644 photos/photoface_100.jpg
+ delete mode 100644 photos/photoface_103.jpg
+ delete mode 100644 photos/photoface_11.jpg
+ delete mode 100644 photos/photoface_115.jpg
+ delete mode 100644 photos/photoface_116.jpg
+ delete mode 100644 photos/photoface_117.jpg
+ delete mode 100644 photos/photoface_118.jpg
+ delete mode 100644 photos/photoface_119.jpg
+ delete mode 100644 photos/photoface_12.jpg
+ delete mode 100644 photos/photoface_120.jpg
+ delete mode 100644 photos/photoface_121.jpg
+ delete mode 100644 photos/photoface_122.jpg
+ delete mode 100644 photos/photoface_123.jpg
+ delete mode 100644 photos/photoface_13.jpg
+ delete mode 100644 photos/photoface_14.jpg
+ delete mode 100644 photos/photoface_15.jpg
+ delete mode 100644 photos/photoface_16.jpg
+ delete mode 100644 photos/photoface_17.jpg
+ delete mode 100644 photos/photoface_18.jpg
+ delete mode 100644 photos/photoface_19.jpg
+ delete mode 100644 photos/photoface_2.jpg
+ delete mode 100644 photos/photoface_20.jpg
+ delete mode 100644 photos/photoface_202.jpg
+ delete mode 100644 photos/photoface_203.jpg
+ delete mode 100644 photos/photoface_204.jpg
+ delete mode 100644 photos/photoface_205.jpg
+ delete mode 100644 photos/photoface_206.jpg
+ delete mode 100644 photos/photoface_207.jpg
+ delete mode 100644 photos/photoface_208.jpg
+ delete mode 100644 photos/photoface_209.jpg
+ delete mode 100644 photos/photoface_21.jpg
+ delete mode 100644 photos/photoface_210.jpg
+ delete mode 100644 photos/photoface_211.jpg
+ delete mode 100644 photos/photoface_212.jpg
+ delete mode 100644 photos/photoface_213.jpg
+ delete mode 100644 photos/photoface_214.jpg
+ delete mode 100644 photos/photoface_215.jpg
+ delete mode 100644 photos/photoface_216.jpg
+ delete mode 100644 photos/photoface_217.jpg
+ delete mode 100644 photos/photoface_218.jpg
+ delete mode 100644 photos/photoface_219.jpg
+ delete mode 100644 photos/photoface_22.jpg
+ delete mode 100644 photos/photoface_220.jpg
+ delete mode 100644 photos/photoface_221.jpg
+ delete mode 100644 photos/photoface_222.jpg
+ delete mode 100644 photos/photoface_223.jpg
+ delete mode 100644 photos/photoface_224.jpg
+ delete mode 100644 photos/photoface_225.jpg
+ delete mode 100644 photos/photoface_226.jpg
+ delete mode 100644 photos/photoface_227.jpg
+ delete mode 100644 photos/photoface_228.jpg
+ delete mode 100644 photos/photoface_229.jpg
+ delete mode 100644 photos/photoface_23.jpg
+ delete mode 100644 photos/photoface_230.jpg
+ delete mode 100644 photos/photoface_231.jpg
+ delete mode 100644 photos/photoface_232.jpg
+ delete mode 100644 photos/photoface_233.jpg
+ delete mode 100644 photos/photoface_234.jpg
+ delete mode 100644 photos/photoface_235.jpg
+ delete mode 100644 photos/photoface_236.jpg
+ delete mode 100644 photos/photoface_237.jpg
+ delete mode 100644 photos/photoface_238.jpg
+ delete mode 100644 photos/photoface_239.jpg
+ delete mode 100644 photos/photoface_24.jpg
+ delete mode 100644 photos/photoface_240.jpg
+ delete mode 100644 photos/photoface_241.jpg
+ delete mode 100644 photos/photoface_242.jpg
+ delete mode 100644 photos/photoface_243.jpg
+ delete mode 100644 photos/photoface_244.jpg
+ delete mode 100644 photos/photoface_245.jpg
+ delete mode 100644 photos/photoface_246.jpg
+ delete mode 100644 photos/photoface_247.jpg
+ delete mode 100644 photos/photoface_248.jpg
+ delete mode 100644 photos/photoface_249.jpg
+ delete mode 100644 photos/photoface_25.jpg
+ delete mode 100644 photos/photoface_250.jpg
+ delete mode 100644 photos/photoface_251.jpg
+ delete mode 100644 photos/photoface_252.jpg
+ delete mode 100644 photos/photoface_253.jpg
+ delete mode 100644 photos/photoface_254.jpg
+ delete mode 100644 photos/photoface_255.jpg
+ delete mode 100644 photos/photoface_256.jpg
+ delete mode 100644 photos/photoface_257.jpg
+ delete mode 100644 photos/photoface_258.jpg
+ delete mode 100644 photos/photoface_259.jpg
+ delete mode 100644 photos/photoface_26.jpg
+ delete mode 100644 photos/photoface_260.jpg
+ delete mode 100644 photos/photoface_261.jpg
+ delete mode 100644 photos/photoface_262.jpg
+ delete mode 100644 photos/photoface_263.jpg
+ delete mode 100644 photos/photoface_264.jpg
+ delete mode 100644 photos/photoface_265.jpg
+ delete mode 100644 photos/photoface_266.jpg
+ delete mode 100644 photos/photoface_267.jpg
+ delete mode 100644 photos/photoface_268.jpg
+ delete mode 100644 photos/photoface_269.jpg
+ delete mode 100644 photos/photoface_27.jpg
+ delete mode 100644 photos/photoface_270.jpg
+ delete mode 100644 photos/photoface_271.jpg
+ delete mode 100644 photos/photoface_272.jpg
+ delete mode 100644 photos/photoface_273.jpg
+ delete mode 100644 photos/photoface_274.jpg
+ delete mode 100644 photos/photoface_275.jpg
+ delete mode 100644 photos/photoface_276.jpg
+ delete mode 100644 photos/photoface_277.jpg
+ delete mode 100644 photos/photoface_278.jpg
+ delete mode 100644 photos/photoface_279.jpg
+ delete mode 100644 photos/photoface_28.jpg
+ delete mode 100644 photos/photoface_280.jpg
+ delete mode 100644 photos/photoface_281.jpg
+ delete mode 100644 photos/photoface_282.jpg
+ delete mode 100644 photos/photoface_283.jpg
+ delete mode 100644 photos/photoface_284.jpg
+ delete mode 100644 photos/photoface_285.jpg
+ delete mode 100644 photos/photoface_286.jpg
+ delete mode 100644 photos/photoface_287.jpg
+ delete mode 100644 photos/photoface_288.jpg
+ delete mode 100644 photos/photoface_289.jpg
+ delete mode 100644 photos/photoface_29.jpg
+ delete mode 100644 photos/photoface_290.jpg
+ delete mode 100644 photos/photoface_291.jpg
+ delete mode 100644 photos/photoface_292.jpg
+ delete mode 100644 photos/photoface_293.jpg
+ delete mode 100644 photos/photoface_294.jpg
+ delete mode 100644 photos/photoface_295.jpg
+ delete mode 100644 photos/photoface_296.jpg
+ delete mode 100644 photos/photoface_297.jpg
+ delete mode 100644 photos/photoface_298.jpg
+ delete mode 100644 photos/photoface_299.jpg
+ delete mode 100644 photos/photoface_3.jpg
+ delete mode 100644 photos/photoface_30.jpg
+ delete mode 100644 photos/photoface_300.jpg
+ delete mode 100644 photos/photoface_302.jpg
+ delete mode 100644 photos/photoface_303.jpg
+ delete mode 100644 photos/photoface_304.jpg
+ delete mode 100644 photos/photoface_305.jpg
+ delete mode 100644 photos/photoface_306.jpg
+ delete mode 100644 photos/photoface_307.jpg
+ delete mode 100644 photos/photoface_308.jpg
+ delete mode 100644 photos/photoface_309.jpg
+ delete mode 100644 photos/photoface_31.jpg
+ delete mode 100644 photos/photoface_310.jpg
+ delete mode 100644 photos/photoface_311.jpg
+ delete mode 100644 photos/photoface_312.jpg
+ delete mode 100644 photos/photoface_313.jpg
+ delete mode 100644 photos/photoface_314.jpg
+ delete mode 100644 photos/photoface_315.jpg
+ delete mode 100644 photos/photoface_316.jpg
+ delete mode 100644 photos/photoface_317.jpg
+ delete mode 100644 photos/photoface_318.jpg
+ delete mode 100644 photos/photoface_319.jpg
+ delete mode 100644 photos/photoface_32.jpg
+ delete mode 100644 photos/photoface_320.jpg
+ delete mode 100644 photos/photoface_321.jpg
+ delete mode 100644 photos/photoface_322.jpg
+ delete mode 100644 photos/photoface_323.jpg
+ delete mode 100644 photos/photoface_324.jpg
+ delete mode 100644 photos/photoface_325.jpg
+ delete mode 100644 photos/photoface_326.jpg
+ delete mode 100644 photos/photoface_327.jpg
+ delete mode 100644 photos/photoface_328.jpg
+ delete mode 100644 photos/photoface_329.jpg
+ delete mode 100644 photos/photoface_33.jpg
+ delete mode 100644 photos/photoface_330.jpg
+ delete mode 100644 photos/photoface_331.jpg
+ delete mode 100644 photos/photoface_332.jpg
+ delete mode 100644 photos/photoface_333.jpg
+ delete mode 100644 photos/photoface_334.jpg
+ delete mode 100644 photos/photoface_335.jpg
+ delete mode 100644 photos/photoface_336.jpg
+ delete mode 100644 photos/photoface_337.jpg
+ delete mode 100644 photos/photoface_338.jpg
+ delete mode 100644 photos/photoface_339.jpg
+ delete mode 100644 photos/photoface_34.jpg
+ delete mode 100644 photos/photoface_340.jpg
+ delete mode 100644 photos/photoface_341.jpg
+ delete mode 100644 photos/photoface_342.jpg
+ delete mode 100644 photos/photoface_343.jpg
+ delete mode 100644 photos/photoface_344.jpg
+ delete mode 100644 photos/photoface_345.jpg
+ delete mode 100644 photos/photoface_346.jpg
+ delete mode 100644 photos/photoface_347.jpg
+ delete mode 100644 photos/photoface_348.jpg
+ delete mode 100644 photos/photoface_349.jpg
+ delete mode 100644 photos/photoface_35.jpg
+ delete mode 100644 photos/photoface_350.jpg
+ delete mode 100644 photos/photoface_351.jpg
+ delete mode 100644 photos/photoface_352.jpg
+ delete mode 100644 photos/photoface_353.jpg
+ delete mode 100644 photos/photoface_354.jpg
+ delete mode 100644 photos/photoface_355.jpg
+ delete mode 100644 photos/photoface_356.jpg
+ delete mode 100644 photos/photoface_357.jpg
+ delete mode 100644 photos/photoface_358.jpg
+ delete mode 100644 photos/photoface_359.jpg
+ delete mode 100644 photos/photoface_36.jpg
+ delete mode 100644 photos/photoface_360.jpg
+ delete mode 100644 photos/photoface_361.jpg
+ delete mode 100644 photos/photoface_362.jpg
+ delete mode 100644 photos/photoface_363.jpg
+ delete mode 100644 photos/photoface_364.jpg
+ delete mode 100644 photos/photoface_365.jpg
+ delete mode 100644 photos/photoface_366.jpg
+ delete mode 100644 photos/photoface_367.jpg
+ delete mode 100644 photos/photoface_368.jpg
+ delete mode 100644 photos/photoface_369.jpg
+ delete mode 100644 photos/photoface_37.jpg
+ delete mode 100644 photos/photoface_370.jpg
+ delete mode 100644 photos/photoface_371.jpg
+ delete mode 100644 photos/photoface_372.jpg
+ delete mode 100644 photos/photoface_373.jpg
+ delete mode 100644 photos/photoface_374.jpg
+ delete mode 100644 photos/photoface_375.jpg
+ delete mode 100644 photos/photoface_376.jpg
+ delete mode 100644 photos/photoface_377.jpg
+ delete mode 100644 photos/photoface_378.jpg
+ delete mode 100644 photos/photoface_379.jpg
+ delete mode 100644 photos/photoface_38.jpg
+ delete mode 100644 photos/photoface_380.jpg
+ delete mode 100644 photos/photoface_381.jpg
+ delete mode 100644 photos/photoface_382.jpg
+ delete mode 100644 photos/photoface_383.jpg
+ delete mode 100644 photos/photoface_384.jpg
+ delete mode 100644 photos/photoface_385.jpg
+ delete mode 100644 photos/photoface_386.jpg
+ delete mode 100644 photos/photoface_387.jpg
+ delete mode 100644 photos/photoface_388.jpg
+ delete mode 100644 photos/photoface_389.jpg
+ delete mode 100644 photos/photoface_39.jpg
+ delete mode 100644 photos/photoface_390.jpg
+ delete mode 100644 photos/photoface_391.jpg
+ delete mode 100644 photos/photoface_392.jpg
+ delete mode 100644 photos/photoface_393.jpg
+ delete mode 100644 photos/photoface_394.jpg
+ delete mode 100644 photos/photoface_395.jpg
+ delete mode 100644 photos/photoface_396.jpg
+ delete mode 100644 photos/photoface_397.jpg
+ delete mode 100644 photos/photoface_398.jpg
+ delete mode 100644 photos/photoface_399.jpg
+ delete mode 100644 photos/photoface_4.jpg
+ delete mode 100644 photos/photoface_40.jpg
+ delete mode 100644 photos/photoface_400.jpg
+ delete mode 100644 photos/photoface_401.jpg
+ delete mode 100644 photos/photoface_41.jpg
+ delete mode 100644 photos/photoface_42.jpg
+ delete mode 100644 photos/photoface_43.jpg
+ delete mode 100644 photos/photoface_44.jpg
+ delete mode 100644 photos/photoface_45.jpg
+ delete mode 100644 photos/photoface_46.jpg
+ delete mode 100644 photos/photoface_47.jpg
+ delete mode 100644 photos/photoface_48.jpg
+ delete mode 100644 photos/photoface_49.jpg
+ delete mode 100644 photos/photoface_5.jpg
+ delete mode 100644 photos/photoface_50.jpg
+ delete mode 100644 photos/photoface_51.jpg
+ delete mode 100644 photos/photoface_52.jpg
+ delete mode 100644 photos/photoface_53.jpg
+ delete mode 100644 photos/photoface_54.jpg
+ delete mode 100644 photos/photoface_55.jpg
+ delete mode 100644 photos/photoface_56.jpg
+ delete mode 100644 photos/photoface_57.jpg
+ delete mode 100644 photos/photoface_58.jpg
+ delete mode 100644 photos/photoface_59.jpg
+ delete mode 100644 photos/photoface_6.jpg
+ delete mode 100644 photos/photoface_60.jpg
+ delete mode 100644 photos/photoface_61.jpg
+ delete mode 100644 photos/photoface_62.jpg
+ delete mode 100644 photos/photoface_63.jpg
+ delete mode 100644 photos/photoface_64.jpg
+ delete mode 100644 photos/photoface_65.jpg
+ delete mode 100644 photos/photoface_66.jpg
+ delete mode 100644 photos/photoface_67.jpg
+ delete mode 100644 photos/photoface_68.jpg
+ delete mode 100644 photos/photoface_69.jpg
+ delete mode 100644 photos/photoface_7.jpg
+ delete mode 100644 photos/photoface_70.jpg
+ delete mode 100644 photos/photoface_71.jpg
+ delete mode 100644 photos/photoface_72.jpg
+ delete mode 100644 photos/photoface_73.jpg
+ delete mode 100644 photos/photoface_74.jpg
+ delete mode 100644 photos/photoface_75.jpg
+ delete mode 100644 photos/photoface_76.jpg
+ delete mode 100644 photos/photoface_77.jpg
+ delete mode 100644 photos/photoface_78.jpg
+ delete mode 100644 photos/photoface_79.jpg
+ delete mode 100644 photos/photoface_8.jpg
+ delete mode 100644 photos/photoface_80.jpg
+ delete mode 100644 photos/photoface_81.jpg
+ delete mode 100644 photos/photoface_82.jpg
+ delete mode 100644 photos/photoface_83.jpg
+ delete mode 100644 photos/photoface_84.jpg
+ delete mode 100644 photos/photoface_85.jpg
+ delete mode 100644 photos/photoface_86.jpg
+ delete mode 100644 photos/photoface_87.jpg
+ delete mode 100644 photos/photoface_88.jpg
+ delete mode 100644 photos/photoface_89.jpg
+ delete mode 100644 photos/photoface_9.jpg
+ delete mode 100644 photos/photoface_90.jpg
+ delete mode 100644 photos/photoface_91.jpg
+ delete mode 100644 photos/photoface_92.jpg
+ delete mode 100644 photos/photoface_93.jpg
+ delete mode 100644 photos/photoface_94.jpg
+ delete mode 100644 photos/photoface_95.jpg
+ delete mode 100644 photos/photoface_96.jpg
+ delete mode 100644 photos/photoface_97.jpg
+ delete mode 100644 photos/photoface_98.jpg
+ delete mode 100644 photos/photoface_99.jpg
+ delete mode 100644 photos/sundar_test.jpg
+ delete mode 100644 photos/sundar_test2.jpg
+ delete mode 100644 voice_notes/like_102_10.m4a
+ delete mode 100644 voice_notes/like_102_18.m4a
+ delete mode 100644 voice_notes/like_102_2.m4a
+ delete mode 100644 voice_notes/like_102_20.m4a
+ delete mode 100644 voice_notes/like_103_10.m4a
+ delete mode 100644 voice_notes/like_103_11.m4a
+ delete mode 100644 voice_notes/like_103_16.m4a
+ delete mode 100644 voice_notes/like_103_18.m4a
+ delete mode 100644 voice_notes/like_103_2.m4a
+ delete mode 100644 voice_notes/like_103_20.m4a
+ delete mode 100644 voice_notes/like_103_26.m4a
+ delete mode 100644 voice_notes/like_103_3.m4a
+ delete mode 100644 voice_notes/like_103_30.m4a
+ delete mode 100644 voice_notes/like_103_4.m4a
+ delete mode 100644 voice_notes/like_103_43.m4a
+ delete mode 100644 voice_notes/like_11_10.m4a
+ delete mode 100644 voice_notes/like_11_14.m4a
+ delete mode 100644 voice_notes/like_11_16.m4a
+ delete mode 100644 voice_notes/like_11_17.m4a
+ delete mode 100644 voice_notes/like_11_18.m4a
+ delete mode 100644 voice_notes/like_11_2.m4a
+ delete mode 100644 voice_notes/like_11_20.m4a
+ delete mode 100644 voice_notes/like_11_28.m4a
+ delete mode 100644 voice_notes/like_11_29.m4a
+ delete mode 100644 voice_notes/like_11_3.m4a
+ delete mode 100644 voice_notes/like_11_30.m4a
+ delete mode 100644 voice_notes/like_11_31.m4a
+ delete mode 100644 voice_notes/like_11_32.m4a
+ delete mode 100644 voice_notes/like_11_35.m4a
+ delete mode 100644 voice_notes/like_11_38.m4a
+ delete mode 100644 voice_notes/like_11_4.m4a
+ delete mode 100644 voice_notes/like_11_5.m4a
+ delete mode 100644 voice_notes/like_201_101.m4a
+ delete mode 100644 voice_notes/like_201_102.m4a
+ delete mode 100644 voice_notes/like_201_107.m4a
+ delete mode 100644 voice_notes/like_201_117.m4a
+ delete mode 100644 voice_notes/like_201_118.m4a
+ delete mode 100644 voice_notes/like_201_144.m4a
+ delete mode 100644 voice_notes/like_201_145.m4a
+ delete mode 100644 voice_notes/like_201_146.m4a
+ delete mode 100644 voice_notes/like_201_148.m4a
+ delete mode 100644 voice_notes/like_201_158.m4a
+ delete mode 100644 voice_notes/like_201_165.m4a
+ delete mode 100644 voice_notes/like_301_10.m4a
+ delete mode 100644 voice_notes/like_301_11.m4a
+ delete mode 100644 voice_notes/like_301_7.m4a
+ delete mode 100644 voice_notes/like_301_8.m4a
+ delete mode 100644 voice_notes/like_301_9.m4a
+ delete mode 100644 voice_notes/voice_like_102_1.m4a
+ delete mode 100644 voice_notes/voice_like_102_10.m4a
+ delete mode 100644 voice_notes/voice_like_102_11.m4a
+ delete mode 100644 voice_notes/voice_like_102_17.m4a
+ delete mode 100644 voice_notes/voice_like_102_20.m4a
+ delete mode 100644 voice_notes/voice_like_102_29.m4a
+ delete mode 100644 voice_notes/voice_like_102_31.m4a
+ delete mode 100644 voice_notes/voice_like_102_35.m4a
+ delete mode 100644 voice_notes/voice_like_102_4.m4a
+ delete mode 100644 voice_notes/voice_like_102_69.m4a
+ delete mode 100644 voice_notes/voice_like_102_72.m4a
+ delete mode 100644 voice_notes/voice_like_102_74.m4a
+ delete mode 100644 voice_notes/voice_like_17_102.m4a
+ delete mode 100644 voice_notes/voice_like_17_37.m4a
+ delete mode 100644 voice_notes/voice_like_17_50.m4a
+ delete mode 100644 voice_notes/voice_like_17_67.m4a
+ delete mode 100644 voice_notes/voice_like_17_85.m4a
+ delete mode 100644 voice_notes/voice_like_28_102.m4a
+ delete mode 100644 voice_notes/voice_like_28_22.m4a
+ delete mode 100644 voice_notes/voice_like_28_47.m4a
+ delete mode 100644 voice_notes/voice_like_28_91.m4a
+ delete mode 100644 voice_notes/voice_like_30_50.m4a
+ delete mode 100644 voice_notes/voice_like_30_52.m4a
+ delete mode 100644 voice_notes/voice_like_30_56.m4a
+ delete mode 100644 voice_notes/voice_like_30_67.m4a
+ delete mode 100644 voice_notes/voice_like_30_91.m4a
+ delete mode 100644 voice_notes/voice_like_30_94.m4a
+ delete mode 100644 voice_notes/voice_like_41_102.m4a
+ delete mode 100644 voice_notes/voice_like_41_28.m4a
+ delete mode 100644 voice_notes/voice_like_41_4.m4a
+ delete mode 100644 voice_notes/voice_like_41_44.m4a
+ delete mode 100644 voice_notes/voice_like_41_47.m4a
+ delete mode 100644 voice_notes/voice_like_41_51.m4a
+ delete mode 100644 voice_notes/voice_like_41_54.m4a
+ delete mode 100644 voice_notes/voice_like_65_102.m4a
+ delete mode 100644 voice_notes/voice_like_65_28.m4a
+ delete mode 100644 voice_notes/voice_like_65_50.m4a
+ delete mode 100644 voice_notes/voice_like_69_102.m4a
+ delete mode 100644 voice_notes/voice_like_69_28.m4a
+ delete mode 100644 voice_notes/voice_like_69_37.m4a
+ delete mode 100644 voice_notes/voice_like_69_95.m4a
+ delete mode 100644 voice_notes/voice_like_70_100.m4a
+ delete mode 100644 voice_notes/voice_like_70_102.m4a
+ delete mode 100644 voice_notes/voice_like_70_11.m4a
+ delete mode 100644 voice_notes/voice_like_70_5.m4a
+ delete mode 100644 voice_notes/voice_like_70_91.m4a
+ delete mode 100644 voice_notes/voice_like_74_102.m4a
+ delete mode 100644 voice_notes/voice_like_74_16.m4a
+ delete mode 100644 voice_notes/voice_like_74_22.m4a
+ delete mode 100644 voice_notes/voice_like_74_63.m4a
+ delete mode 100644 voice_notes/voice_like_74_68.m4a
+ delete mode 100644 voice_notes/voice_like_74_91.m4a
+ delete mode 100644 voice_notes/voice_like_90_102.m4a
+ delete mode 100644 voice_notes/voice_like_90_17.m4a
+ delete mode 100644 voice_notes/voice_like_90_37.m4a
+ delete mode 100644 voice_notes/voice_like_90_44.m4a
+ delete mode 100644 voice_notes/voice_like_90_47.m4a
+ delete mode 100644 voice_notes/voice_like_90_62.m4a
+ delete mode 100644 voice_notes/voice_like_98_102.m4a
+ delete mode 100644 voice_notes/voice_like_98_5.m4a
+ delete mode 100644 voice_notes/voice_like_98_62.m4a
+ delete mode 100644 voice_notes/voice_like_98_95.m4a
+To https://github.com/PhantomFront/BackA20.git
+   e0c375d..8bc9a63  development -> development
+Deleted branch fix/gitignore-photos (was a48863a).
+
+=== final state ===
+8bc9a63 Merge fix/gitignore-photos into development
+a48863a gitignore: untrack photos/, voice_notes/, media/
+e0c375d Merge fix/face-slot-as-profile into development
+---
+* development
+  fix/likes-for-jasoooooooooooo
+---
+=== disk sanity: photos still present ===
+  photos: 100
+  voice_notes: 0
+
+=== git status now (should be clean on photo-related) ===
+?? .venv-broken-backup-2026-04-22/
+?? DevDB.sqlite.backup-2026-04-22-0117
+?? debug_db.py
+?? debug_show_users.py
+?? patch_username_check.py
+?? test_version.sh

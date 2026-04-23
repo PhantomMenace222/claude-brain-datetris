@@ -1,0 +1,1640 @@
+=== BackA20 BEFORE ===
+ M .env
+ M __pycache__/auth.cpython-312.pyc
+ M __pycache__/config.cpython-312.pyc
+ M __pycache__/config.cpython-314.pyc
+ M __pycache__/main.cpython-312.pyc
+ M __pycache__/models.cpython-312.pyc
+ M __pycache__/routes.cpython-312.pyc
+ M __pycache__/security.cpython-312.pyc
+ D app.db
+ M backend.log
+ M backend_clean.log
+ M config.py
+ D demo_db_new.sqlite
+ M requirements.txt
+ M security.py
+ D venv/bin/fastapi
+ M venv/bin/uvicorn
+ M venv/lib/python3.12/site-packages/__pycache__/typing_extensions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/annotated_types/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/__pycache__/from_thread.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/__pycache__/lowlevel.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/__pycache__/to_thread.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_backends/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_backends/__pycache__/_asyncio.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_contextmanagers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_eventloop.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_fileio.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_resources.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_signals.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_sockets.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_streams.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_subprocesses.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_synchronization.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_tasks.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_tempfile.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_testing.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/_core/__pycache__/_typedattr.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/abc/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/abc/__pycache__/_eventloop.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/abc/__pycache__/_resources.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/abc/__pycache__/_sockets.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/abc/__pycache__/_streams.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/abc/__pycache__/_subprocesses.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/abc/__pycache__/_tasks.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/abc/__pycache__/_testing.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/streams/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/streams/__pycache__/memory.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/streams/__pycache__/stapled.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/anyio/streams/__pycache__/tls.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/bcrypt-5.0.0.dist-info/INSTALLER
+ D venv/lib/python3.12/site-packages/bcrypt-5.0.0.dist-info/LICENSE
+ D venv/lib/python3.12/site-packages/bcrypt-5.0.0.dist-info/METADATA
+ D venv/lib/python3.12/site-packages/bcrypt-5.0.0.dist-info/RECORD
+ D venv/lib/python3.12/site-packages/bcrypt-5.0.0.dist-info/WHEEL
+ D venv/lib/python3.12/site-packages/bcrypt-5.0.0.dist-info/top_level.txt
+ M venv/lib/python3.12/site-packages/bcrypt/__init__.py
+ D venv/lib/python3.12/site-packages/bcrypt/__init__.pyi
+ M venv/lib/python3.12/site-packages/bcrypt/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/bcrypt/_bcrypt.abi3.so
+ M venv/lib/python3.12/site-packages/click/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/_compat.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/_utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/core.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/decorators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/formatting.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/globals.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/parser.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/termui.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/click/__pycache__/utils.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi-0.136.0.dist-info/INSTALLER
+ D venv/lib/python3.12/site-packages/fastapi-0.136.0.dist-info/METADATA
+ D venv/lib/python3.12/site-packages/fastapi-0.136.0.dist-info/RECORD
+ D venv/lib/python3.12/site-packages/fastapi-0.136.0.dist-info/REQUESTED
+ D venv/lib/python3.12/site-packages/fastapi-0.136.0.dist-info/WHEEL
+ D venv/lib/python3.12/site-packages/fastapi-0.136.0.dist-info/entry_points.txt
+ D venv/lib/python3.12/site-packages/fastapi-0.136.0.dist-info/licenses/LICENSE
+ D venv/lib/python3.12/site-packages/fastapi/.agents/skills/fastapi/SKILL.md
+ D venv/lib/python3.12/site-packages/fastapi/.agents/skills/fastapi/references/dependencies.md
+ D venv/lib/python3.12/site-packages/fastapi/.agents/skills/fastapi/references/other-tools.md
+ D venv/lib/python3.12/site-packages/fastapi/.agents/skills/fastapi/references/streaming.md
+ M venv/lib/python3.12/site-packages/fastapi/__init__.py
+ D venv/lib/python3.12/site-packages/fastapi/__main__.py
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/__init__.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi/__pycache__/__main__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/applications.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/background.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi/__pycache__/cli.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/concurrency.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/datastructures.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/encoders.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/exception_handlers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/logger.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/param_functions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/params.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/requests.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/responses.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/routing.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi/__pycache__/sse.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/staticfiles.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/templating.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/testclient.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/__pycache__/websockets.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi/_compat/__init__.py
+ D venv/lib/python3.12/site-packages/fastapi/_compat/__pycache__/__init__.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi/_compat/__pycache__/shared.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi/_compat/__pycache__/v2.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi/_compat/shared.py
+ D venv/lib/python3.12/site-packages/fastapi/_compat/v2.py
+ M venv/lib/python3.12/site-packages/fastapi/applications.py
+ M venv/lib/python3.12/site-packages/fastapi/background.py
+ D venv/lib/python3.12/site-packages/fastapi/cli.py
+ M venv/lib/python3.12/site-packages/fastapi/concurrency.py
+ M venv/lib/python3.12/site-packages/fastapi/datastructures.py
+ M venv/lib/python3.12/site-packages/fastapi/dependencies/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/dependencies/__pycache__/models.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/dependencies/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/dependencies/models.py
+ M venv/lib/python3.12/site-packages/fastapi/dependencies/utils.py
+ M venv/lib/python3.12/site-packages/fastapi/encoders.py
+ M venv/lib/python3.12/site-packages/fastapi/exception_handlers.py
+ M venv/lib/python3.12/site-packages/fastapi/exceptions.py
+ M venv/lib/python3.12/site-packages/fastapi/middleware/__pycache__/__init__.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi/middleware/__pycache__/asyncexitstack.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/middleware/__pycache__/cors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/middleware/__pycache__/gzip.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/middleware/__pycache__/httpsredirect.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/middleware/__pycache__/trustedhost.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/middleware/__pycache__/wsgi.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py
+ M venv/lib/python3.12/site-packages/fastapi/middleware/wsgi.py
+ M venv/lib/python3.12/site-packages/fastapi/openapi/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/openapi/__pycache__/constants.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/openapi/__pycache__/docs.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/openapi/__pycache__/models.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/openapi/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/openapi/docs.py
+ M venv/lib/python3.12/site-packages/fastapi/openapi/models.py
+ M venv/lib/python3.12/site-packages/fastapi/openapi/utils.py
+ M venv/lib/python3.12/site-packages/fastapi/param_functions.py
+ M venv/lib/python3.12/site-packages/fastapi/params.py
+ M venv/lib/python3.12/site-packages/fastapi/responses.py
+ M venv/lib/python3.12/site-packages/fastapi/routing.py
+ M venv/lib/python3.12/site-packages/fastapi/security/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/security/__pycache__/api_key.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/security/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/security/__pycache__/http.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/security/__pycache__/oauth2.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/security/__pycache__/open_id_connect_url.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/security/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/fastapi/security/api_key.py
+ M venv/lib/python3.12/site-packages/fastapi/security/http.py
+ M venv/lib/python3.12/site-packages/fastapi/security/oauth2.py
+ M venv/lib/python3.12/site-packages/fastapi/security/open_id_connect_url.py
+ M venv/lib/python3.12/site-packages/fastapi/security/utils.py
+ D venv/lib/python3.12/site-packages/fastapi/sse.py
+ M venv/lib/python3.12/site-packages/fastapi/types.py
+ M venv/lib/python3.12/site-packages/fastapi/utils.py
+ M venv/lib/python3.12/site-packages/h11/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_abnf.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_connection.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_events.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_headers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_readers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_receivebuffer.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_state.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_version.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/h11/__pycache__/_writers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/idna/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/idna/__pycache__/core.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/idna/__pycache__/idnadata.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/idna/__pycache__/intranges.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/idna/__pycache__/package_data.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/__init__.py
+ M venv/lib/python3.12/site-packages/jose/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/__pycache__/constants.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/__pycache__/jwe.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/__pycache__/jwk.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/__pycache__/jws.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/__pycache__/jwt.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/backends/__init__.py
+ M venv/lib/python3.12/site-packages/jose/backends/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/backends/__pycache__/_asn1.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/backends/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/backends/__pycache__/cryptography_backend.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/backends/__pycache__/ecdsa_backend.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/backends/__pycache__/native.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/backends/__pycache__/rsa_backend.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/jose/backends/_asn1.py
+ M venv/lib/python3.12/site-packages/jose/backends/cryptography_backend.py
+ M venv/lib/python3.12/site-packages/jose/backends/native.py
+ M venv/lib/python3.12/site-packages/jose/backends/rsa_backend.py
+ M venv/lib/python3.12/site-packages/jose/constants.py
+ M venv/lib/python3.12/site-packages/jose/jwe.py
+ M venv/lib/python3.12/site-packages/jose/jwk.py
+ M venv/lib/python3.12/site-packages/jose/jws.py
+ M venv/lib/python3.12/site-packages/jose/jwt.py
+ M venv/lib/python3.12/site-packages/jose/utils.py
+ M venv/lib/python3.12/site-packages/multipart/__init__.py
+ M venv/lib/python3.12/site-packages/multipart/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/multipart/__pycache__/decoders.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/multipart/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/multipart/__pycache__/multipart.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/multipart/decoders.py
+ M venv/lib/python3.12/site-packages/multipart/exceptions.py
+ M venv/lib/python3.12/site-packages/multipart/multipart.py
+ M venv/lib/python3.12/site-packages/passlib/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/__pycache__/context.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/__pycache__/exc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/__pycache__/ifc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/__pycache__/registry.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/crypto/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/crypto/__pycache__/digest.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/handlers/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/handlers/__pycache__/bcrypt.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/utils/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/utils/__pycache__/binary.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/utils/__pycache__/decor.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/utils/__pycache__/handlers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/passlib/utils/compat/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/__pycache__/__main__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/__pycache__/build_env.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/__pycache__/cache.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/__pycache__/configuration.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/__pycache__/pyproject.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/__pycache__/self_outdated_check.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/__pycache__/wheel_builder.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/autocompletion.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/base_command.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/cmdoptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/command_context.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/index_command.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/main.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/main_parser.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/parser.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/progress_bars.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/req_command.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/spinners.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/cli/__pycache__/status_codes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/commands/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/commands/__pycache__/install.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/distributions/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/distributions/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/distributions/__pycache__/installed.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/distributions/__pycache__/sdist.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/distributions/__pycache__/wheel.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/index/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/index/__pycache__/collector.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/index/__pycache__/package_finder.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/index/__pycache__/sources.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/locations/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/locations/__pycache__/_sysconfig.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/locations/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/metadata/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/metadata/__pycache__/_json.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/metadata/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/metadata/importlib/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/metadata/importlib/__pycache__/_compat.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/metadata/importlib/__pycache__/_dists.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/metadata/importlib/__pycache__/_envs.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/candidate.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/direct_url.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/format_control.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/index.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/installation_report.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/link.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/release_control.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/scheme.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/search_scope.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/selection_prefs.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/target_python.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/models/__pycache__/wheel.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__/auth.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__/cache.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__/download.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__/lazy_wheel.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__/session.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/network/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/__pycache__/check.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/__pycache__/prepare.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/build/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/build/__pycache__/build_tracker.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/build/__pycache__/metadata.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/build/__pycache__/metadata_editable.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/build/__pycache__/wheel.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/build/__pycache__/wheel_editable.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/install/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/operations/install/__pycache__/wheel.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__/constructors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__/pep723.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__/req_dependency_group.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__/req_file.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__/req_install.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__/req_set.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/req/__pycache__/req_uninstall.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__/candidates.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__/factory.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__/found_candidates.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__/provider.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__/reporter.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__/requirements.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/resolution/resolvelib/__pycache__/resolver.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/_log.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/appdirs.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/compat.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/compatibility_tags.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/datetime.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/deprecation.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/direct_url_helpers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/egg_link.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/entrypoints.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/filesystem.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/filetypes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/glibc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/hashes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/logging.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/misc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/packaging.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/retry.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/subprocess.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/temp_dir.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/unpacking.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/urls.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/virtualenv.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/utils/__pycache__/wheel.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/vcs/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/vcs/__pycache__/bazaar.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/vcs/__pycache__/git.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/vcs/__pycache__/mercurial.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/vcs/__pycache__/subversion.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_internal/vcs/__pycache__/versioncontrol.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/adapter.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/cache.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/controller.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/filewrapper.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/serialize.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/__pycache__/wrapper.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/__pycache__/file_cache.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/cachecontrol/caches/__pycache__/redis_cache.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/certifi/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/certifi/__pycache__/core.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/dependency_groups/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/dependency_groups/__pycache__/_implementation.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__/compat.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__/resources.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__/scripts.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/distlib/__pycache__/util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__/core.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__/idnadata.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__/intranges.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/idna/__pycache__/package_data.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__/ext.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/msgpack/__pycache__/fallback.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/_elffile.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/_manylinux.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/_musllinux.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/_parser.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/_structures.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/_tokenizer.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/markers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/requirements.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/specifiers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/tags.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/packaging/__pycache__/version.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__/api.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__/macos.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/platformdirs/__pycache__/version.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/filter.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/lexer.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/modeline.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/plugin.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/regexopt.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/style.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/token.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/__pycache__/util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/filters/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/lexers/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/lexers/__pycache__/_mapping.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/styles/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pygments/styles/__pycache__/_mapping.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/__pycache__/_impl.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/__version__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/_internal_utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/adapters.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/api.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/auth.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/certs.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/compat.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/cookies.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/hooks.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/models.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/packages.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/sessions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/status_codes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/structures.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/requests/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/providers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/reporters.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/__pycache__/structs.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/resolvers/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/resolvers/__pycache__/abstract.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/resolvers/__pycache__/criterion.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/resolvers/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/resolvelib/resolvers/__pycache__/resolution.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_cell_widths.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_emoji_codes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_emoji_replace.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_export_format.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_extension.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_fileno.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_log_render.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_loop.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_null_file.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_palettes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_pick.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_ratio.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_spinners.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/_wrap.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/abc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/align.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/ansi.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/box.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/cells.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/color.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/color_triplet.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/columns.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/console.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/constrain.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/containers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/control.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/default_styles.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/emoji.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/errors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/file_proxy.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/filesize.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/highlighter.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/jupyter.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/live.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/live_render.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/logging.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/markup.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/measure.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/padding.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/pager.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/palette.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/panel.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/pretty.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/progress.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/progress_bar.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/protocol.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/region.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/repr.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/scope.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/screen.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/segment.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/spinner.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/style.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/styled.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/syntax.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/table.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/terminal_theme.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/text.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/theme.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/themes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/rich/__pycache__/traceback.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_api.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_macos.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/truststore/__pycache__/_ssl_constants.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/_collections.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/_version.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/connection.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/connectionpool.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/fields.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/filepost.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/poolmanager.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/request.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/__pycache__/response.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/contrib/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/contrib/__pycache__/_appengine_environ.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/contrib/__pycache__/socks.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/packages/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/packages/__pycache__/six.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/connection.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/proxy.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/queue.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/request.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/response.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/retry.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/ssl_.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/ssl_match_hostname.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/ssltransport.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/timeout.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/url.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pip/_vendor/urllib3/util/__pycache__/wait.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__init__.py
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/_migration.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/alias_generators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/aliases.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/annotated_handlers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/class_validators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/color.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/config.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/dataclasses.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/datetime_parse.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/decorator.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/env_settings.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/error_wrappers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/errors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/fields.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/functional_serializers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/functional_validators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/generics.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/json.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/json_schema.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/main.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/mypy.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/networks.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/parse.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/root_model.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/schema.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/tools.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/type_adapter.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/typing.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/validate_call_decorator.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/validators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/version.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/__pycache__/warnings.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_config.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_core_metadata.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_core_utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_dataclasses.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_decorators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_decorators_v1.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_discriminated_union.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_docs_extraction.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_fields.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_forward_ref.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_generate_schema.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_generics.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_git.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_import_utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_internal_dataclass.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_known_annotated_metadata.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_mock_val_ser.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_model_construction.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_namespace_utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_repr.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_schema_gather.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_schema_generation_shared.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_serializers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_signature.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_typing_extra.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_validate_call.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_validators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_config.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_core_metadata.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_core_utils.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_decorators.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_decorators_v1.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_discriminated_union.py
+ D venv/lib/python3.12/site-packages/pydantic/_internal/_docs_extraction.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_fields.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_generics.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_git.py
+ D venv/lib/python3.12/site-packages/pydantic/_internal/_import_utils.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_internal_dataclass.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_known_annotated_metadata.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_mock_val_ser.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_model_construction.py
+ D venv/lib/python3.12/site-packages/pydantic/_internal/_namespace_utils.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_repr.py
+ D venv/lib/python3.12/site-packages/pydantic/_internal/_schema_gather.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_schema_generation_shared.py
+ D venv/lib/python3.12/site-packages/pydantic/_internal/_serializers.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_signature.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_typing_extra.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_utils.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_validate_call.py
+ M venv/lib/python3.12/site-packages/pydantic/_internal/_validators.py
+ M venv/lib/python3.12/site-packages/pydantic/_migration.py
+ M venv/lib/python3.12/site-packages/pydantic/alias_generators.py
+ M venv/lib/python3.12/site-packages/pydantic/aliases.py
+ M venv/lib/python3.12/site-packages/pydantic/annotated_handlers.py
+ M venv/lib/python3.12/site-packages/pydantic/class_validators.py
+ M venv/lib/python3.12/site-packages/pydantic/color.py
+ M venv/lib/python3.12/site-packages/pydantic/config.py
+ M venv/lib/python3.12/site-packages/pydantic/dataclasses.py
+ M venv/lib/python3.12/site-packages/pydantic/datetime_parse.py
+ M venv/lib/python3.12/site-packages/pydantic/decorator.py
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/__pycache__/class_validators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/__pycache__/config.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/__pycache__/copy_internals.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/__pycache__/decorator.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/__pycache__/json.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/__pycache__/parse.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/__pycache__/tools.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/class_validators.py
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/config.py
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/copy_internals.py
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/decorator.py
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/json.py
+ M venv/lib/python3.12/site-packages/pydantic/deprecated/tools.py
+ M venv/lib/python3.12/site-packages/pydantic/env_settings.py
+ M venv/lib/python3.12/site-packages/pydantic/error_wrappers.py
+ M venv/lib/python3.12/site-packages/pydantic/errors.py
+ D venv/lib/python3.12/site-packages/pydantic/experimental/__init__.py
+ D venv/lib/python3.12/site-packages/pydantic/experimental/__pycache__/__init__.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/pydantic/experimental/__pycache__/arguments_schema.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/pydantic/experimental/__pycache__/missing_sentinel.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/pydantic/experimental/__pycache__/pipeline.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/pydantic/experimental/arguments_schema.py
+ D venv/lib/python3.12/site-packages/pydantic/experimental/missing_sentinel.py
+ D venv/lib/python3.12/site-packages/pydantic/experimental/pipeline.py
+ M venv/lib/python3.12/site-packages/pydantic/fields.py
+ M venv/lib/python3.12/site-packages/pydantic/functional_serializers.py
+ M venv/lib/python3.12/site-packages/pydantic/functional_validators.py
+ M venv/lib/python3.12/site-packages/pydantic/generics.py
+ M venv/lib/python3.12/site-packages/pydantic/json.py
+ M venv/lib/python3.12/site-packages/pydantic/json_schema.py
+ M venv/lib/python3.12/site-packages/pydantic/main.py
+ M venv/lib/python3.12/site-packages/pydantic/mypy.py
+ M venv/lib/python3.12/site-packages/pydantic/networks.py
+ M venv/lib/python3.12/site-packages/pydantic/parse.py
+ M venv/lib/python3.12/site-packages/pydantic/plugin/__init__.py
+ M venv/lib/python3.12/site-packages/pydantic/plugin/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/plugin/__pycache__/_loader.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/plugin/__pycache__/_schema_validator.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/plugin/_loader.py
+ M venv/lib/python3.12/site-packages/pydantic/plugin/_schema_validator.py
+ M venv/lib/python3.12/site-packages/pydantic/root_model.py
+ M venv/lib/python3.12/site-packages/pydantic/schema.py
+ M venv/lib/python3.12/site-packages/pydantic/tools.py
+ M venv/lib/python3.12/site-packages/pydantic/type_adapter.py
+ M venv/lib/python3.12/site-packages/pydantic/types.py
+ M venv/lib/python3.12/site-packages/pydantic/typing.py
+ M venv/lib/python3.12/site-packages/pydantic/utils.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/__init__.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/_hypothesis_plugin.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/annotated_types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/class_validators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/color.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/config.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/dataclasses.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/datetime_parse.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/decorator.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/env_settings.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/error_wrappers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/errors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/fields.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/generics.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/json.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/main.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/mypy.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/networks.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/parse.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/schema.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/tools.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/typing.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/validators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/__pycache__/version.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic/v1/_hypothesis_plugin.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/annotated_types.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/class_validators.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/color.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/config.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/dataclasses.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/datetime_parse.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/decorator.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/env_settings.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/error_wrappers.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/errors.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/fields.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/generics.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/json.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/main.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/mypy.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/networks.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/parse.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/schema.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/tools.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/types.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/typing.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/utils.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/validators.py
+ M venv/lib/python3.12/site-packages/pydantic/v1/version.py
+ M venv/lib/python3.12/site-packages/pydantic/validate_call_decorator.py
+ M venv/lib/python3.12/site-packages/pydantic/validators.py
+ M venv/lib/python3.12/site-packages/pydantic/version.py
+ M venv/lib/python3.12/site-packages/pydantic/warnings.py
+ D venv/lib/python3.12/site-packages/pydantic_core-2.46.2.dist-info/INSTALLER
+ D venv/lib/python3.12/site-packages/pydantic_core-2.46.2.dist-info/METADATA
+ D venv/lib/python3.12/site-packages/pydantic_core-2.46.2.dist-info/RECORD
+ D venv/lib/python3.12/site-packages/pydantic_core-2.46.2.dist-info/WHEEL
+ D venv/lib/python3.12/site-packages/pydantic_core-2.46.2.dist-info/licenses/LICENSE
+ D venv/lib/python3.12/site-packages/pydantic_core-2.46.2.dist-info/sboms/pydantic-core.cyclonedx.json
+ M venv/lib/python3.12/site-packages/pydantic_core/__init__.py
+ M venv/lib/python3.12/site-packages/pydantic_core/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic_core/__pycache__/core_schema.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/pydantic_core/_pydantic_core.cpython-312-darwin.so
+ M venv/lib/python3.12/site-packages/pydantic_core/_pydantic_core.pyi
+ M venv/lib/python3.12/site-packages/pydantic_core/core_schema.py
+ D venv/lib/python3.12/site-packages/python_jose-3.5.0.dist-info/INSTALLER
+ D venv/lib/python3.12/site-packages/python_jose-3.5.0.dist-info/METADATA
+ D venv/lib/python3.12/site-packages/python_jose-3.5.0.dist-info/RECORD
+ D venv/lib/python3.12/site-packages/python_jose-3.5.0.dist-info/REQUESTED
+ D venv/lib/python3.12/site-packages/python_jose-3.5.0.dist-info/WHEEL
+ D venv/lib/python3.12/site-packages/python_jose-3.5.0.dist-info/licenses/LICENSE
+ D venv/lib/python3.12/site-packages/python_jose-3.5.0.dist-info/top_level.txt
+ D venv/lib/python3.12/site-packages/python_multipart-0.0.26.dist-info/INSTALLER
+ D venv/lib/python3.12/site-packages/python_multipart-0.0.26.dist-info/METADATA
+ D venv/lib/python3.12/site-packages/python_multipart-0.0.26.dist-info/RECORD
+ D venv/lib/python3.12/site-packages/python_multipart-0.0.26.dist-info/REQUESTED
+ D venv/lib/python3.12/site-packages/python_multipart-0.0.26.dist-info/WHEEL
+ D venv/lib/python3.12/site-packages/python_multipart-0.0.26.dist-info/licenses/LICENSE.txt
+ D venv/lib/python3.12/site-packages/python_multipart/__init__.py
+ D venv/lib/python3.12/site-packages/python_multipart/__pycache__/__init__.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/python_multipart/__pycache__/decoders.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/python_multipart/__pycache__/exceptions.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/python_multipart/__pycache__/multipart.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/python_multipart/decoders.py
+ D venv/lib/python3.12/site-packages/python_multipart/exceptions.py
+ D venv/lib/python3.12/site-packages/python_multipart/multipart.py
+ D venv/lib/python3.12/site-packages/python_multipart/py.typed
+ D venv/lib/python3.12/site-packages/sqlalchemy-2.0.49.dist-info/INSTALLER
+ D venv/lib/python3.12/site-packages/sqlalchemy-2.0.49.dist-info/METADATA
+ D venv/lib/python3.12/site-packages/sqlalchemy-2.0.49.dist-info/RECORD
+ D venv/lib/python3.12/site-packages/sqlalchemy-2.0.49.dist-info/REQUESTED
+ D venv/lib/python3.12/site-packages/sqlalchemy-2.0.49.dist-info/WHEEL
+ D venv/lib/python3.12/site-packages/sqlalchemy-2.0.49.dist-info/licenses/LICENSE
+ D venv/lib/python3.12/site-packages/sqlalchemy-2.0.49.dist-info/top_level.txt
+ M venv/lib/python3.12/site-packages/sqlalchemy/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/__pycache__/events.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/__pycache__/exc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/__pycache__/inspection.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/__pycache__/log.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/__pycache__/schema.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/__pycache__/types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/connectors/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/connectors/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/connectors/__pycache__/aioodbc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/connectors/__pycache__/asyncio.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/connectors/__pycache__/pyodbc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/connectors/aioodbc.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/connectors/asyncio.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/connectors/pyodbc.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/cyextension/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/cyextension/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/cyextension/collections.cpython-312-darwin.so
+ M venv/lib/python3.12/site-packages/sqlalchemy/cyextension/immutabledict.cpython-312-darwin.so
+ M venv/lib/python3.12/site-packages/sqlalchemy/cyextension/processors.cpython-312-darwin.so
+ M venv/lib/python3.12/site-packages/sqlalchemy/cyextension/resultproxy.cpython-312-darwin.so
+ M venv/lib/python3.12/site-packages/sqlalchemy/cyextension/util.cpython-312-darwin.so
+ M venv/lib/python3.12/site-packages/sqlalchemy/cyextension/util.pyx
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/__pycache__/_typing.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/_typing.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/__pycache__/aioodbc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/__pycache__/information_schema.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/__pycache__/json.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/__pycache__/provision.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/__pycache__/pymssql.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/__pycache__/pyodbc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/aioodbc.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/information_schema.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/json.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/provision.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/pymssql.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mssql/pyodbc.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/aiomysql.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/asyncmy.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/cymysql.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/dml.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/enumerated.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/expression.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/json.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/mariadb.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/mariadbconnector.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/mysqlconnector.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/mysqldb.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/provision.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/pymysql.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/pyodbc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/reflection.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/reserved_words.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/__pycache__/types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/aiomysql.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/asyncmy.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/cymysql.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/dml.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/enumerated.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/expression.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/json.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/mariadb.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/mariadbconnector.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/mysqlconnector.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/mysqldb.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/provision.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/pymysql.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/pyodbc.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/reflection.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/reserved_words.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/types.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/__pycache__/cx_oracle.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/__pycache__/dictionary.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/__pycache__/oracledb.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/__pycache__/provision.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/__pycache__/types.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/__pycache__/vector.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/cx_oracle.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/dictionary.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/oracledb.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/provision.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/types.py
+ D venv/lib/python3.12/site-packages/sqlalchemy/dialects/oracle/vector.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/_psycopg_common.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/array.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/asyncpg.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/dml.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/ext.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/hstore.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/json.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/named_types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/operators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/pg8000.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/pg_catalog.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/provision.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/psycopg.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/psycopg2.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/psycopg2cffi.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/ranges.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/__pycache__/types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/_psycopg_common.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/array.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/dml.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/ext.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/hstore.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/json.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/named_types.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/operators.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/pg8000.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/pg_catalog.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/provision.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg2cffi.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/ranges.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/types.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/__pycache__/aiosqlite.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/__pycache__/dml.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/__pycache__/json.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/__pycache__/provision.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/__pycache__/pysqlcipher.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/__pycache__/pysqlite.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/dml.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/json.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/provision.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/pysqlcipher.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/pysqlite.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/_py_processors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/_py_row.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/_py_util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/characteristics.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/create.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/cursor.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/default.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/events.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/interfaces.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/mock.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/processors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/reflection.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/result.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/row.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/strategies.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/url.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/__pycache__/util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/_py_processors.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/_py_row.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/_py_util.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/characteristics.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/create.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/cursor.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/events.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/interfaces.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/mock.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/processors.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/result.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/row.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/strategies.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/url.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/engine/util.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/__pycache__/api.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/__pycache__/attr.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/__pycache__/legacy.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/__pycache__/registry.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/api.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/attr.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/legacy.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/event/registry.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/events.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/exc.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/associationproxy.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/automap.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/baked.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/compiler.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/horizontal_shard.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/hybrid.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/indexable.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/instrumentation.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/mutable.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/orderinglist.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/__pycache__/serializer.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/associationproxy.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/__pycache__/engine.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/__pycache__/exc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/__pycache__/result.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/__pycache__/scoping.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/__pycache__/session.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/exc.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/result.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/scoping.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/automap.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/baked.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/compiler.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/declarative/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/declarative/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/declarative/__pycache__/extensions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/declarative/extensions.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/horizontal_shard.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/hybrid.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/indexable.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/instrumentation.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mutable.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/__pycache__/apply.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/__pycache__/decl_class.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/__pycache__/infer.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/__pycache__/names.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/__pycache__/plugin.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/__pycache__/util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/apply.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/decl_class.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/infer.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/names.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/plugin.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/mypy/util.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/orderinglist.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/ext/serializer.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/future/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/future/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/future/__pycache__/engine.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/future/engine.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/inspection.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/log.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/_orm_constructors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/_typing.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/attributes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/bulk_persistence.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/clsregistry.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/collections.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/context.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/decl_api.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/decl_base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/dependency.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/descriptor_props.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/dynamic.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/evaluator.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/events.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/exc.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/identity.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/instrumentation.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/interfaces.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/loading.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/mapped_collection.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/mapper.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/path_registry.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/persistence.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/properties.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/query.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/relationships.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/scoping.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/session.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/state.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/state_changes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/strategies.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/strategy_options.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/sync.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/unitofwork.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/__pycache__/writeonly.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/_orm_constructors.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/_typing.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/bulk_persistence.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/clsregistry.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/collections.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/decl_api.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/decl_base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/dependency.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/descriptor_props.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/dynamic.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/evaluator.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/events.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/exc.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/identity.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/instrumentation.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/interfaces.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/loading.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/mapped_collection.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/mapper.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/path_registry.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/properties.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/relationships.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/scoping.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/state.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/strategies.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/strategy_options.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/sync.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/util.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/orm/writeonly.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/pool/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/pool/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/pool/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/pool/__pycache__/events.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/pool/__pycache__/impl.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/pool/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/pool/events.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/pool/impl.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/schema.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/_dml_constructors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/_elements_constructors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/_orm_types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/_py_util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/_selectable_constructors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/_typing.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/annotation.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/cache_key.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/coercions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/compiler.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/crud.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/ddl.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/default_comparator.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/dml.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/elements.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/events.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/expression.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/functions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/lambdas.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/naming.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/operators.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/roles.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/schema.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/selectable.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/sqltypes.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/traversals.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/type_api.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/__pycache__/visitors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/_dml_constructors.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/_elements_constructors.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/_orm_types.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/_py_util.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/_selectable_constructors.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/_typing.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/annotation.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/cache_key.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/compiler.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/crud.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/default_comparator.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/dml.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/events.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/expression.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/functions.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/lambdas.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/naming.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/operators.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/roles.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/schema.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/selectable.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/sqltypes.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/traversals.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/type_api.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/util.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/sql/visitors.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/assertions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/assertsql.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/asyncio.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/config.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/engines.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/entities.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/exclusions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/pickleable.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/profiling.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/provision.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/requirements.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/schema.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/util.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/__pycache__/warnings.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/assertions.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/assertsql.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/asyncio.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/config.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/engines.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/entities.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/exclusions.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/__pycache__/mypy.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/__pycache__/orm.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/__pycache__/sql.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/mypy.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/orm.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/fixtures/sql.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/pickleable.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/plugin/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/plugin/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/plugin/__pycache__/bootstrap.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/plugin/__pycache__/plugin_base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/plugin/__pycache__/pytestplugin.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/plugin/bootstrap.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/plugin/plugin_base.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/plugin/pytestplugin.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/profiling.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/provision.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/requirements.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/schema.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_cte.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_ddl.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_deprecations.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_dialect.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_insert.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_reflection.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_results.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_rowcount.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_select.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_sequence.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_unicode_ddl.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/__pycache__/test_update_delete.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_cte.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_ddl.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_deprecations.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_dialect.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_insert.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_reflection.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_results.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_rowcount.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_select.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_sequence.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_types.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_unicode_ddl.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/suite/test_update_delete.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/util.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/testing/warnings.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/types.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__init__.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/_collections.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/_concurrency_py3k.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/_has_cy.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/_py_collections.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/compat.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/concurrency.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/deprecations.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/langhelpers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/preloaded.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/queue.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/tool_support.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/topological.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/__pycache__/typing.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/_collections.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/_has_cy.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/_py_collections.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/compat.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/concurrency.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/deprecations.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/preloaded.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/queue.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/tool_support.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/topological.py
+ M venv/lib/python3.12/site-packages/sqlalchemy/util/typing.py
+ D venv/lib/python3.12/site-packages/starlette-1.0.0.dist-info/INSTALLER
+ D venv/lib/python3.12/site-packages/starlette-1.0.0.dist-info/METADATA
+ D venv/lib/python3.12/site-packages/starlette-1.0.0.dist-info/RECORD
+ D venv/lib/python3.12/site-packages/starlette-1.0.0.dist-info/WHEEL
+ D venv/lib/python3.12/site-packages/starlette-1.0.0.dist-info/licenses/LICENSE.md
+ M venv/lib/python3.12/site-packages/starlette/__init__.py
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/_exception_handler.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/_utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/applications.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/authentication.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/background.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/concurrency.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/config.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/convertors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/datastructures.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/endpoints.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/formparsers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/requests.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/responses.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/routing.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/schemas.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/staticfiles.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/status.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/templating.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/testclient.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/__pycache__/websockets.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/_exception_handler.py
+ M venv/lib/python3.12/site-packages/starlette/_utils.py
+ M venv/lib/python3.12/site-packages/starlette/applications.py
+ M venv/lib/python3.12/site-packages/starlette/authentication.py
+ M venv/lib/python3.12/site-packages/starlette/background.py
+ M venv/lib/python3.12/site-packages/starlette/concurrency.py
+ M venv/lib/python3.12/site-packages/starlette/config.py
+ M venv/lib/python3.12/site-packages/starlette/convertors.py
+ M venv/lib/python3.12/site-packages/starlette/datastructures.py
+ M venv/lib/python3.12/site-packages/starlette/endpoints.py
+ M venv/lib/python3.12/site-packages/starlette/exceptions.py
+ M venv/lib/python3.12/site-packages/starlette/formparsers.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/__init__.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/authentication.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/base.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/cors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/errors.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/exceptions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/gzip.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/httpsredirect.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/sessions.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/trustedhost.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/__pycache__/wsgi.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/starlette/middleware/authentication.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/base.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/cors.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/errors.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/gzip.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/sessions.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/trustedhost.py
+ M venv/lib/python3.12/site-packages/starlette/middleware/wsgi.py
+ M venv/lib/python3.12/site-packages/starlette/requests.py
+ M venv/lib/python3.12/site-packages/starlette/responses.py
+ M venv/lib/python3.12/site-packages/starlette/routing.py
+ M venv/lib/python3.12/site-packages/starlette/schemas.py
+ M venv/lib/python3.12/site-packages/starlette/staticfiles.py
+ M venv/lib/python3.12/site-packages/starlette/status.py
+ M venv/lib/python3.12/site-packages/starlette/templating.py
+ M venv/lib/python3.12/site-packages/starlette/testclient.py
+ M venv/lib/python3.12/site-packages/starlette/types.py
+ M venv/lib/python3.12/site-packages/starlette/websockets.py
+ D venv/lib/python3.12/site-packages/uvicorn-0.44.0.dist-info/INSTALLER
+ D venv/lib/python3.12/site-packages/uvicorn-0.44.0.dist-info/METADATA
+ D venv/lib/python3.12/site-packages/uvicorn-0.44.0.dist-info/RECORD
+ D venv/lib/python3.12/site-packages/uvicorn-0.44.0.dist-info/REQUESTED
+ D venv/lib/python3.12/site-packages/uvicorn-0.44.0.dist-info/WHEEL
+ D venv/lib/python3.12/site-packages/uvicorn-0.44.0.dist-info/entry_points.txt
+ D venv/lib/python3.12/site-packages/uvicorn-0.44.0.dist-info/licenses/LICENSE.md
+ M venv/lib/python3.12/site-packages/uvicorn/__init__.py
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/__main__.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/uvicorn/__pycache__/_compat.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/_subprocess.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/_types.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/config.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/importer.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/logging.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/main.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/server.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/__pycache__/workers.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/uvicorn/_compat.py
+ M venv/lib/python3.12/site-packages/uvicorn/_subprocess.py
+ M venv/lib/python3.12/site-packages/uvicorn/_types.py
+ M venv/lib/python3.12/site-packages/uvicorn/config.py
+ M venv/lib/python3.12/site-packages/uvicorn/importer.py
+ M venv/lib/python3.12/site-packages/uvicorn/lifespan/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/lifespan/__pycache__/off.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/lifespan/__pycache__/on.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/lifespan/off.py
+ M venv/lib/python3.12/site-packages/uvicorn/lifespan/on.py
+ M venv/lib/python3.12/site-packages/uvicorn/logging.py
+ M venv/lib/python3.12/site-packages/uvicorn/loops/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/loops/__pycache__/asyncio.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/loops/__pycache__/auto.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/loops/__pycache__/uvloop.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/loops/asyncio.py
+ M venv/lib/python3.12/site-packages/uvicorn/loops/auto.py
+ M venv/lib/python3.12/site-packages/uvicorn/loops/uvloop.py
+ M venv/lib/python3.12/site-packages/uvicorn/main.py
+ M venv/lib/python3.12/site-packages/uvicorn/middleware/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/middleware/__pycache__/asgi2.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/middleware/__pycache__/message_logger.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/middleware/__pycache__/proxy_headers.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/middleware/__pycache__/wsgi.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/middleware/asgi2.py
+ M venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py
+ M venv/lib/python3.12/site-packages/uvicorn/middleware/wsgi.py
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/__pycache__/utils.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/http/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/http/__pycache__/auto.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/http/__pycache__/flow_control.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/http/__pycache__/h11_impl.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/http/__pycache__/httptools_impl.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/http/auto.py
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/http/flow_control.py
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/utils.py
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/websockets/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/websockets/__pycache__/auto.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/websockets/__pycache__/websockets_impl.cpython-312.pyc
+ D venv/lib/python3.12/site-packages/uvicorn/protocols/websockets/__pycache__/websockets_sansio_impl.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/websockets/__pycache__/wsproto_impl.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/websockets/auto.py
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/websockets/websockets_impl.py
+ D venv/lib/python3.12/site-packages/uvicorn/protocols/websockets/websockets_sansio_impl.py
+ M venv/lib/python3.12/site-packages/uvicorn/protocols/websockets/wsproto_impl.py
+ M venv/lib/python3.12/site-packages/uvicorn/server.py
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/__init__.py
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/__pycache__/__init__.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/__pycache__/basereload.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/__pycache__/multiprocess.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/__pycache__/statreload.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/__pycache__/watchfilesreload.cpython-312.pyc
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/basereload.py
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/multiprocess.py
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/statreload.py
+ M venv/lib/python3.12/site-packages/uvicorn/supervisors/watchfilesreload.py
+ M venv/lib/python3.12/site-packages/uvicorn/workers.py
+?? DevDB.sqlite
+?? __pycache__/scheduler.cpython-312.pyc
+?? __pycache__/security.cpython-314.pyc
+?? backend.pid
+?? backend_fresh.log
+?? backend_new.log
+?? debug_db.py
+?? debug_show_users.py
+?? patch_username_check.py
+?? photos/photoface_404.jpg
+?? photos/photoface_405.jpg
+?? photos/photoface_406.jpg
+?? photos/photoface_407.jpg
+?? photos/photoface_408.jpg
+?? photos/photoface_409.jpg
+?? photos/photoface_410.jpg
+?? photos/photoface_411.jpg
+?? photos/photoface_412.jpg
+?? photos/photoface_413.jpg
+?? photos/photoface_414.jpg
+?? photos/photoface_415.jpg
+?? photos/photoface_416.jpg
+?? photos/photoface_417.jpg
+?? photos/photoface_418.jpg
+?? photos/photoface_419.jpg
+?? photos/photoface_420.jpg
+?? photos/photoface_421.jpg
+?? photos/photoface_422.jpg
+?? photos/photoface_423.jpg
+?? photos/photoface_424.jpg
+?? photos/photoface_425.jpg
+?? photos/photoface_426.jpg
+?? photos/photoface_427.jpg
+?? photos/photoface_428.jpg
+?? photos/photoface_429.jpg
+?? photos/photoface_430.jpg
+?? photos/photoface_431.jpg
+?? photos/photoface_432.jpg
+?? photos/photoface_433.jpg
+?? photos/photoface_434.jpg
+?? photos/photoface_435.jpg
+?? photos/photoface_436.jpg
+?? photos/photoface_437.jpg
+?? photos/photoface_438.jpg
+?? photos/photoface_439.jpg
+?? photos/photoface_440.jpg
+?? photos/photoface_441.jpg
+?? photos/photoface_442.jpg
+?? photos/photoface_443.jpg
+?? photos/photoface_444.jpg
+?? photos/photoface_445.jpg
+?? photos/photoface_446.jpg
+?? photos/photoface_447.jpg
+?? photos/photoface_448.jpg
+?? photos/photoface_449.jpg
+?? photos/photoface_450.jpg
+?? photos/photoface_451.jpg
+?? photos/photoface_452.jpg
+?? photos/photoface_453.jpg
+?? photos/photoface_454.jpg
+?? photos/photoface_455.jpg
+?? photos/photoface_456.jpg
+?? photos/photoface_457.jpg
+?? photos/photoface_458.jpg
+?? photos/photoface_459.jpg
+?? photos/photoface_460.jpg
+?? photos/photoface_461.jpg
+?? photos/photoface_462.jpg
+?? photos/photoface_463.jpg
+?? photos/photoface_464.jpg
+?? photos/photoface_465.jpg
+?? photos/photoface_466.jpg
+?? photos/photoface_467.jpg
+?? photos/photoface_468.jpg
+?? photos/photoface_469.jpg
+?? photos/photoface_470.jpg
+?? photos/photoface_471.jpg
+?? photos/photoface_472.jpg
+?? photos/photoface_473.jpg
+?? photos/photoface_474.jpg
+?? photos/photoface_475.jpg
+?? photos/photoface_476.jpg
+?? photos/photoface_477.jpg
+?? photos/photoface_478.jpg
+?? photos/photoface_479.jpg
+?? photos/photoface_480.jpg
+?? photos/photoface_481.jpg
+?? photos/photoface_482.jpg
+?? photos/photoface_483.jpg
+?? photos/photoface_484.jpg
+?? photos/photoface_485.jpg
+?? photos/photoface_486.jpg
+?? photos/photoface_487.jpg
+?? photos/photoface_488.jpg
+?? photos/photoface_489.jpg
+?? photos/photoface_490.jpg
+?? photos/photoface_491.jpg
+?? photos/photoface_492.jpg
+?? photos/photoface_493.jpg
+?? photos/photoface_494.jpg
+?? photos/photoface_495.jpg
+?? photos/photoface_496.jpg
+?? photos/photoface_497.jpg
+?? photos/photoface_498.jpg
+?? photos/photoface_499.jpg
+?? photos/photoface_500.jpg
+?? photos/photoface_501.jpg
+?? photos/photoface_502.jpg
+?? photos/photoface_503.jpg
+?? test_version.sh
+?? venv/bin/normalizer
+?? venv/lib/python3.12/site-packages/81d243bd2c585b0f4821__mypyc.cpython-312-darwin.so
+?? venv/lib/python3.12/site-packages/SQLAlchemy-2.0.25.dist-info/
+?? venv/lib/python3.12/site-packages/_cffi_backend.cpython-312-darwin.so
+?? venv/lib/python3.12/site-packages/aiodns-4.0.0.dist-info/
+?? venv/lib/python3.12/site-packages/aiodns/
+?? venv/lib/python3.12/site-packages/aiofile-3.9.0.dist-info/
+?? venv/lib/python3.12/site-packages/aiofile/
+?? venv/lib/python3.12/site-packages/aiohappyeyeballs-2.6.1.dist-info/
+?? venv/lib/python3.12/site-packages/aiohappyeyeballs/
+?? venv/lib/python3.12/site-packages/aiohttp-3.13.5.dist-info/
+?? venv/lib/python3.12/site-packages/aiohttp/
+?? venv/lib/python3.12/site-packages/aiosignal-1.4.0.dist-info/
+?? venv/lib/python3.12/site-packages/aiosignal/
+?? venv/lib/python3.12/site-packages/apscheduler-3.11.2.dist-info/
+?? venv/lib/python3.12/site-packages/apscheduler/
+?? venv/lib/python3.12/site-packages/attr/
+?? venv/lib/python3.12/site-packages/attrs-26.1.0.dist-info/
+?? venv/lib/python3.12/site-packages/attrs/
+?? venv/lib/python3.12/site-packages/bcrypt-4.0.1.dist-info/
+?? venv/lib/python3.12/site-packages/bcrypt/__about__.py
+?? venv/lib/python3.12/site-packages/bcrypt/__pycache__/__about__.cpython-312.pyc
+?? venv/lib/python3.12/site-packages/bcrypt/_bcrypt.pyi
+?? venv/lib/python3.12/site-packages/caio-0.9.25.dist-info/
+?? venv/lib/python3.12/site-packages/caio/
+?? venv/lib/python3.12/site-packages/certifi-2026.2.25.dist-info/
+?? venv/lib/python3.12/site-packages/certifi/
+?? venv/lib/python3.12/site-packages/cffi-2.0.0.dist-info/
+?? venv/lib/python3.12/site-packages/cffi/
+?? venv/lib/python3.12/site-packages/charset_normalizer-3.4.7.dist-info/
+?? venv/lib/python3.12/site-packages/charset_normalizer/
+?? venv/lib/python3.12/site-packages/cryptography-46.0.7.dist-info/
+?? venv/lib/python3.12/site-packages/cryptography/
+?? venv/lib/python3.12/site-packages/fastapi-0.109.0.dist-info/
+?? venv/lib/python3.12/site-packages/fastapi/__pycache__/_compat.cpython-312.pyc
+?? venv/lib/python3.12/site-packages/fastapi/_compat.py
+?? venv/lib/python3.12/site-packages/frozenlist-1.8.0.dist-info/
+?? venv/lib/python3.12/site-packages/frozenlist/
+?? venv/lib/python3.12/site-packages/jwt/
+?? venv/lib/python3.12/site-packages/multidict-6.7.1.dist-info/
+?? venv/lib/python3.12/site-packages/multidict/
+?? venv/lib/python3.12/site-packages/pip-26.0.1.dist-info/
+?? venv/lib/python3.12/site-packages/pip/_vendor/certifi/cacert.pem
+?? venv/lib/python3.12/site-packages/propcache-0.4.1.dist-info/
+?? venv/lib/python3.12/site-packages/propcache/
+?? venv/lib/python3.12/site-packages/pycares-5.0.1.dist-info/
+?? venv/lib/python3.12/site-packages/pycares/
+?? venv/lib/python3.12/site-packages/pycparser-3.0.dist-info/
+?? venv/lib/python3.12/site-packages/pycparser/
+?? venv/lib/python3.12/site-packages/pydantic-2.6.2.dist-info/
+?? venv/lib/python3.12/site-packages/pydantic/_internal/__pycache__/_std_types_schema.cpython-312.pyc
+?? venv/lib/python3.12/site-packages/pydantic/_internal/_std_types_schema.py
+?? venv/lib/python3.12/site-packages/pydantic_core-2.16.3.dist-info/
+?? venv/lib/python3.12/site-packages/pydantic_core-2.46.3.dist-info/
+?? venv/lib/python3.12/site-packages/pyjwt-2.12.1.dist-info/
+?? venv/lib/python3.12/site-packages/python_jose-3.3.0.dist-info/
+?? venv/lib/python3.12/site-packages/python_multipart-0.0.9.dist-info/
+?? venv/lib/python3.12/site-packages/requests-2.33.1.dist-info/
+?? venv/lib/python3.12/site-packages/requests/
+?? venv/lib/python3.12/site-packages/starlette-0.35.1.dist-info/
+?? venv/lib/python3.12/site-packages/starlette/__pycache__/_compat.cpython-312.pyc
+?? venv/lib/python3.12/site-packages/starlette/_compat.py
+?? venv/lib/python3.12/site-packages/stream_chat-4.31.0.dist-info/
+?? venv/lib/python3.12/site-packages/stream_chat/
+?? venv/lib/python3.12/site-packages/tzlocal-5.3.1.dist-info/
+?? venv/lib/python3.12/site-packages/tzlocal/
+?? venv/lib/python3.12/site-packages/urllib3-2.6.3.dist-info/
+?? venv/lib/python3.12/site-packages/urllib3/
+?? venv/lib/python3.12/site-packages/uvicorn-0.24.0.dist-info/
+?? venv/lib/python3.12/site-packages/uvicorn/supervisors/__pycache__/watchgodreload.cpython-312.pyc
+?? venv/lib/python3.12/site-packages/uvicorn/supervisors/watchgodreload.py
+?? venv/lib/python3.12/site-packages/yarl-1.23.0.dist-info/
+?? venv/lib/python3.12/site-packages/yarl/
+=== FrontA20 BEFORE ===
+ M lib/services/api_service.dart
