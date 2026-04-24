@@ -6,3 +6,8 @@
 - [Banner workflow after IPA upload](feedback_banner_workflow.md) — after IPA N uploaded, next fix branch = (N+1).1; current X = 105
 - [Session wrap 2026-04-22](project_session_wrap_2026-04-22.md) — prod infra live (api.datetris.date on 167.71.136.223), today's shipped work, pending for next session (IPA +3 build, proper profile-photo flow, re-enable gallery slots + Dating Speed)
 - [Bell pattern](feedback_bell_pattern.md) — this session rings terminal bell 2× on Stop + Notification (multi-session fingerprint)
+- [POST error display](feedback_error_display.md) — every POST failure must show status + body + trace_id + endpoint; no generic "Error 500"; acceptance criterion for new POST features
+- [Local test password](reference_test_password.md) — use `111111111111` for all dev/test logins; do NOT use `testpass123` / `testpass12345` (retired)
+- [Launch commands on every test ask](feedback_launch_commands.md) — every "please test" must bundle full paste-ready sequence: kill ports → checkout → start BE → verify → flutter run -d <device>; user only does paste+wait+test
+- [Default Flutter devices](reference_default_devices.md) — default `-d` is iPhone 17 Sim (`841E07BF-ABB0-4FB2-8D01-E7CC0648CDFC`); iPhone 26 wireless `00008140-0018688C3602801C` for mic/camera/push/IAP/prod-repro; decision tree inside; always state device + why in launch block
+- [Branch naming: one-cycle-one-pair](workflow_branch_naming.md) — `fix/<N>-backend` / `fix/<N>-frontend` / `fix/<N>-admin-panel` ONLY; never split a number; never use freeform descriptors; ask before deviating

@@ -13,33 +13,72 @@ Two version surfaces:
 
 **Definition of X (the number that matters):**
 
-X = the build number on the *next* release we'll upload (iOS TestFlight or Android Play Store — unified series, not per-platform). As of 2026-04-23 end-of-day, X = 105 (IPAs 101, 102, 104 have been uploaded; next release is 105). It stays constant across:
-- multiple fix branches within the same release cycle
+X = the **dev-cycle number** the work is part of. The dev cycle is the
+integer that names the M107 branch trio (`fix/<X>-backend`,
+`fix/<X>-frontend`, `fix/<X>-admin-panel`). The pubspec `+X` and the
+banner `(X)` always equal that integer; you don't track them
+independently.
+
+X advances when a new dev cycle starts (i.e. when the first
+`fix/<X+1>-...` branch is created). It stays constant across:
+- multiple fix branches within the same cycle
 - all merges to `development`
 - all iterations of any one fix branch
+- IPA builds — every IPA in cycle X carries `+X`, regardless of how
+  many TestFlight uploads happened in that cycle (Apple's
+  monotonic-build-number rule still applies; if you need a 2nd upload
+  in the same cycle, bump pubspec to `+X.1` or skip ahead by mutual
+  consent — but the default is one IPA per cycle)
 
-X changes only when a release has been accepted by the store and we start the next cycle. Then `pubspec +X → +X+1`, and subsequent work targets the new X.
+**History note:** Three schemes have existed:
+- Pre-2026-04-23: iOS TestFlight count only (values 2, 3, 4).
+- 2026-04-23 to 2026-04-24: shared X across iOS+Android, advanced on
+  Apple acceptance (101, 102, 104, 105).
+- **From 2026-04-24 onward (M128): X = dev-cycle number.** Build 114
+  IPA carries `+114` (was briefly `+4` from M127, bumped to `+114` to
+  align). Next IPA in cycle 115 will carry `+115`.
 
-**History note:** Prior to 2026-04-23, X tracked the iOS TestFlight build number only (values 2, 3, 4). On 2026-04-23 the scheme unified to a single shared series continuing from the Android AAB build 100 → next X = 101. The jump from 4 → 101 is intentional and one-time.
+**Flow example** (post-M128, Y is a counter within one cycle):
 
-**Flow example** (Y is a counter that only advances, across all fix branches in the cycle):
-
-1. `development` stable at banner `2026-04-23(101)`. Next release target = 101.
-2. `fix/a` off `development` → banner `2026-04-23(101.1)`. pubspec unchanged.
-3. Second commit on `fix/a` → banner `2026-04-23(101.2)`.
-4. Merge `fix/a` to `development`, clean banner to `2026-04-23(101)`.
-5. New work → `fix/b` off `development`. First commit uses banner `2026-04-23(101.3)` (continues the counter from the last fix-branch iteration, does **not** reset to `.1`).
-6. Merge `fix/b` clean → `(101)` on `development`.
-7. Ready to ship → `flutter build ipa --release --build-number=101 --build-name=2026.4.23` (or via pubspec `+101`). Upload.
-8. Store accepts → bump X to 102 and banner `(101) → (102)` on `development` in one commit. Y counter resets. Next fix branch starts at `(102.1)`.
+1. `development` stable at banner `2026-04-24(114)`. Cycle = 114.
+   pubspec at `+114`.
+2. `fix/115-frontend` opens off `development` → banner becomes
+   `2026-04-24(115.1)` on first commit. Cycle has advanced to 115.
+3. Second commit on `fix/115-frontend` → banner `2026-04-24(115.2)`.
+4. Merge `fix/115-frontend` to `development` → banner cleans to
+   `2026-04-24(115)` (either in the merge commit or a follow-up).
+5. New same-cycle work → `fix/115-frontend` is the only frontend
+   branch per the M107 convention, so further frontend work in cycle
+   115 is impossible without violating the rule. New frontend work =
+   new cycle = `fix/116-frontend` and banner `(116.1)`.
+6. Ready to ship cycle 115 → `pubspec` at `+115` (bump in one commit
+   on `development` if it's still at `+114`), `flutter build ipa
+   --release`. Upload.
+7. **No bump on Apple acceptance.** The next pubspec change is when
+   cycle 116 starts.
 
 **Why:** User wants the banner to carry two pieces of information: (a) which Apple build a runtime corresponds to, and (b) whether that runtime is a stable dev-branch snapshot or a WIP fix-branch iteration. Keeping pubspec pinned until Apple confirms avoids burning build numbers on unshipped work and matches Apple's strictly-monotonic build-number rule.
 
-**How to apply:**
-- Every fix-branch commit increments `Y` in `lib/core/version.dart`. The first commit on a new fix branch picks up from the last `Y` used anywhere in the current Apple cycle, not `1`. Check the banner on the latest merged-to-`development` fix branch (via `git log`) if unsure.
-- `Y` resets to `1` only after Apple accepts the `+X` upload and we advance to `+X+1`.
-- Never bump `pubspec.yaml` on a fix branch or at merge-to-`development` time.
-- When merging a fix branch to `development`, the very next commit (or the merge commit itself) changes banner from `(X.Y)` → clean `(X)`.
-- Bump `pubspec.yaml` and banner `(X) → (X+1)` only **after** Apple has accepted the previous upload.
-- Before running `flutter build ipa --release`, verify: banner is `(X)` clean-form (not `(X.Y)`) and pubspec matches that `X`. If banner still has a dot, the fix isn't merged to `development` yet — stop and fix that first.
-- Date portion `YYYY-MM-DD` reflects the work day. Update it on new-day commits if the branch or cycle spans days.
+**How to apply (post-M128):**
+- Every fix-branch commit increments `Y` in `lib/core/version.dart`,
+  starting at `.1` for the first commit on a new cycle's fix branch.
+- `Y` resets to `1` when a new dev cycle starts (new X). It does NOT
+  carry across cycles.
+- `pubspec` `+X` always equals the current dev cycle. Bump it when you
+  start cycle X+1 — typically on the first commit of `fix/<X+1>-...`,
+  OR on the `development` branch as a one-line commit before
+  `flutter build ipa`. If you forget and pubspec is stale at IPA
+  build time, the build will succeed with the stale value; you'll
+  notice when the App Store Connect upload shows the wrong build
+  number. Better to bump proactively.
+- When merging a fix branch to `development`, the very next commit
+  (or the merge commit itself) changes banner from `(X.Y)` → clean
+  `(X)`.
+- Apple acceptance is no longer a versioning trigger. The trigger is
+  "new fix-branch cycle starts" → bump everything in lockstep.
+- Before running `flutter build ipa --release`, verify: banner is
+  `(X)` clean-form (not `(X.Y)`) AND pubspec `+X` matches the same X.
+  If banner still has a dot, the fix isn't merged to `development`
+  yet — stop and fix that first. If pubspec is stale, bump it.
+- Date portion `YYYY-MM-DD` reflects the work day. Update it on
+  new-day commits if the branch or cycle spans days.

@@ -1,12 +1,16 @@
-- [Test account credentials](test_credentials.md) — default backend smoke-test login is happysammy / 111111111111
+- [Test account credentials](test_credentials.md) — local DevDB: every user has password 111111111111 (twelve 1s, M78 convention); prod passwords separate
 - [Reply format (separator + bracketed tags)](feedback_reply_format.md) — every reply: `---` then `[MN]` at top, `[MN]` again at bottom (supersedes prior reply_separator + message_numbering rules)
 - [Fix-branch git workflow](feedback_git_workflow.md) — every change goes through `fix/<desc>` → `development` → (on FE App Store submit) `main` + tag
+- [Branch naming — one number, one pair](workflow_branch_naming.md) — cycle N = fix/N-backend + fix/N-frontend (+ fix/N-admin-panel); never split N across BE branches; never reuse N
 - [Push fix branches on every commit](feedback_push_fix_branches.md) — `git push origin fix/<desc>` after every commit; not just at merge time (matches FE repo rule)
 - [Git workflow exceptions](feedback_git_workflow_exceptions.md) — if fix branch is lost mid-session and commit lands on development, push as-is; do not rewrite history
 - [Session wrap 2026-04-22](project_session_wrap_2026-04-22.md) — where things live, what shipped, pending for next session
 - [Session wrap 2026-04-23](project_session_wrap_2026-04-23.md) — TestFlight build 3 live; deploy.sh + nginx-wipe FIXED (27be564); /api/version live as 2026-04-23(4.3) (59faebb); App Store Connect rename still pending
 - [Auto-approve safe ops](feedback_auto_approve.md) — proceed without asking on edits/git/SSH/curl; still confirm destructive ops, deploys, main/tag
+- [Always include restart/verify command](feedback_launch_commands.md) — every "please test/verify" must ship with the full shell command (restart + curl); no bare asks
+- [M-number numbering scheme](feedback_numbering_scheme.md) — main=M<n>, chat=M<n>chat<sub>, panel=M<n>panel<sub>; <n> is global counter shared across all three
 - [Gallery slots refactor plan](project_gallery_slots_refactor.md) — Option A (User.display_slot col); resolver behind /api/users/{id}/photo changes, FE keeps working; check MEDIA_DIR exists on prod first
 - [VERSION env convention](feedback_version_convention.md) — backend VERSION snapshots FE banner ONLY at actual prod deploy; never bumps for FE fix-branch work that hasn't shipped (corrected M10)
 - [Deploy workflow (never from fix branch)](feedback_deploy_workflow.md) — `bash deploy/deploy.sh` must run from `development` with fix branch already merged; check `git branch --show-current` first
 - [Prod double-approval (HARD)](feedback_prod_double_approval.md) — every prod-modifying op (deploy, prod SSH write, prod curl write, main push) requires 2 explicit approvals; overrides AUTO-APPROVE
+- [Jason test user is a dev fixture](project_jason_test_user.md) — Jason id=1 post-M97; seed_jason.py = safe ensure, seed_dev_clean.py = destructive full rebuild (25 users + 95 voice likes, deterministic)

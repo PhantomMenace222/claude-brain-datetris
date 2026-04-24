@@ -1,0 +1,6 @@
+- [Reply envelope format](feedback_reply_format.md) — every reply must be wrapped: `---` / `[MN]` / blank / body / blank / `[MN]` (set M106, 2026-04-24)
+- [Prompt numbering scheme](feedback_numbering_scheme.md) — user's tag format is `M<n>chat<sub>`; M<n> is a global counter shared across BackA20/FrontA20/admin/ChatA20 — never renumber
+- [Colima bind-mount gotcha](feedback_colima_bind_mounts.md) — never bind-mount individual files in compose on this host; virtiofs serves stale content — mount directories only
+- [ChatA20 scope & hosting decisions](project_chata20_scope.md) — Mac Mini + Compose + Cloudflare Tunnel, infra-agnostic, E2E deferred with encryption_version schema hook
+- [Mac Mini container runtime](project_mac_mini_runtime.md) — Colima (not Docker Desktop); API bound to host port 8010 because BackA20 owns 8000
+- [Neighboring projects](reference_neighbor_projects.md) — BackA20/FrontA20/Sammy-Brain-Backup share the Mac Mini; check ports before binding

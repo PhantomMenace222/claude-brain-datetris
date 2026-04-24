@@ -1,0 +1,1482 @@
+=== re-run merge to surface conflict markers for inspection ===
+Auto-merging models.py
+Auto-merging routes.py
+CONFLICT (content): Merge conflict in routes.py
+
+=== find the conflict regions ===
+1063:<<<<<<< HEAD
+1069:=======
+1075:>>>>>>> origin/fix/113-rank-one-grace
+
+=== conflict context (around the markers) ===
+ 1063: <<<<<<< HEAD
+ 1064:     M110 (fix/114-backend): the function existed but was never decorated,
+ 1065:     so DELETE /api/like/{id} returned 404. The grace-aware version of this
+ 1066:     logic lives on fix/113-rank-one-grace (M104 Part B) with additional
+ 1067:     lock_activated_at checks that the development schema doesn't support;
+ 1068:     that'll merge in when fix/113 lands. This is the minimal wiring fix.
+ 1069: =======
+ 1070:     M104: if a RankOneLike row exists for this pair AND it's still in the
+ 1071:     grace phase (lock_activated_at IS NULL), delete it too. Locked rows
+ 1072:     block unlike on the FE via rank_one_phase='locked', so we shouldn't
+ 1073:     see a locked-row delete reach here — but if one does, raise 409 so
+ 1074:     the FE surfaces the violation rather than silently bypassing the lock.
+ 1075: >>>>>>> origin/fix/113-rank-one-grace
+ 1076:     """
+ 1077:     liked_user = db.query(User).filter(User.id == liked_user_id).first()
+ 1078: 
+ 1079:     # M104: guard against unliking a LOCKED rank-1 row
+ 1080:     existing_lock = db.query(RankOneLike).filter(
+ 1081:         RankOneLike.liker_id == current_user.id,
+ 1082:         RankOneLike.liked_id == liked_user_id,
+ 1083:         RankOneLike.status == "pending",
+ 1084:     ).first()
+ 1085:     if existing_lock is not None and existing_lock.lock_activated_at is not None:
+ 1086:         raise HTTPException(
+ 1087:             status_code=status.HTTP_409_CONFLICT,
+ 1088:             detail="Cannot unlike: rank-1 lock is active",
+ 1089:         )
+ 1090:     if existing_lock is not None:
+ 1091:         # grace-phase row — safe to delete alongside the Like/stat
+ 1092:         db.delete(existing_lock)
+ 1093: 
+ 1094:     # Remove Like row
+ 1095:     like = db.query(Like).filter(
+ 1096:         Like.liker_id == current_user.id,
+ 1097:         Like.liked_id == liked_user_id,
+ 1098:     ).first()
+ 1099:     if like:
+ 1100:         db.delete(like)
+ 1101: 
+ 1102:     # Remove UserLikeStats row
+ 1103:     if liked_user:
+ 1104:         stat = db.query(UserLikeStats).filter(
+ 1105:             UserLikeStats.username == current_user.username,
+ 1106:             UserLikeStats.user_likes == liked_user.username,
+ 1107:         ).first()
+ 1108:         if stat:
+ 1109:             db.delete(stat)
+ 1110: 
+ 1111:     # Remove any match record for this pair
+ 1112:     u1, u2 = min(current_user.id, liked_user_id), max(current_user.id, liked_user_id)
+ 1113:     match = db.query(Match).filter(Match.user1_id == u1, Match.user2_id == u2).first()
+ 1114:     if match:
+ 1115:         db.delete(match)
+ 1116: 
+ 1117:     db.commit()
+ 1118: 
+ 1119:     # Resequence remaining ranks for this user
+ 1120:     _recalculate_user_ranks(db, current_user.username)
+ 1121: 
+ 1122:     return {"status": "unliked"}
+ 1123: 
+ 1124: 
+ 1125: @router.post("/block", status_code=status.HTTP_201_CREATED)
+ 1126: async def block_user(
+ 1127:     req: BlockRequest,
+ 1128:     current_user: User = Depends(get_current_user),
+ 1129:     db: Session = Depends(get_db),
+ 1130: ):
+ 1131:     """Block another user."""
+ 1132:     if req.blocked_user_id == current_user.id:
+ 1133:         raise HTTPException(status_code=400, detail="Cannot block yourself")
+ 1134:     existing = db.query(Block).filter(
+ 1135:         Block.blocker_id == current_user.id,
+ 1136:         Block.blocked_id == req.blocked_user_id,
+ 1137:     ).first()
+ 1138:     if not existing:
+ 1139:         db.add(Block(blocker_id=current_user.id, blocked_id=req.blocked_user_id))
+ 1140:         db.commit()
+ 1141:     return {"status": "blocked"}
+ 1142: 
+ 1143: 
+ 1144: class BlockedUserItem(BaseModel):
+ 1145:     user_id: int
+ 1146:     username: str
+ 1147:     headline: Optional[str] = None
+ 1148:     photo_url: Optional[str] = None
+ 1149:     blocked_at: Optional[str] = None
+ 1150: 
+ 1151: 
+ 1152: class BlockedUsersResponse(BaseModel):
+ 1153:     users: List[BlockedUserItem]
+ 1154:     total: int
+ 1155: 
+ 1156: 
+ 1157: @router.get("/blocked", response_model=BlockedUsersResponse)
+ 1158: async def get_blocked_users(
+ 1159:     current_user: User = Depends(get_current_user),
+ 1160:     db: Session = Depends(get_db),
+ 1161: ):
+ 1162:     """Return users the current user has blocked, most recent first."""
+ 1163:     # Sort by Block.id DESC: autoincrement id is monotonic with insert
+ 1164:     # order, so it works even for pre-migration rows where created_at is
+ 1165:     # NULL. created_at is surfaced in the payload when available.
+ 1166:     results = (
+ 1167:         db.query(Block, User)
+ 1168:         .join(User, User.id == Block.blocked_id)
+ 1169:         .filter(Block.blocker_id == current_user.id)
+ 1170:         .order_by(Block.id.desc())
+ 1171:         .all()
+ 1172:     )
+ 1173:     items = [
+ 1174:         BlockedUserItem(
+ 1175:             user_id=u.id,
+ 1176:             username=u.username,
+ 1177:             headline=u.headline,
+ 1178:             photo_url=f"{config.BASE_URL}/photos/photoface_{u.id}.jpg",
+ 1179:             blocked_at=(b.created_at.isoformat() + "Z") if b.created_at else None,
+ 1180:         )
+ 1181:         for b, u in results
+ 1182:     ]
+ 1183:     return BlockedUsersResponse(users=items, total=len(items))
+ 1184: 
+ 1185: 
+ 1186: @router.delete("/block/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
+ 1187: async def unblock_user(
+ 1188:     user_id: int,
+ 1189:     current_user: User = Depends(get_current_user),
+ 1190:     db: Session = Depends(get_db),
+ 1191: ):
+ 1192:     """Remove a block. Idempotent — 204 whether or not a row existed."""
+ 1193:     existing = db.query(Block).filter(
+ 1194:         Block.blocker_id == current_user.id,
+ 1195:         Block.blocked_id == user_id,
+ 1196:     ).first()
+ 1197:     if existing:
+ 1198:         db.delete(existing)
+ 1199:         db.commit()
+ 1200:     return None
+ 1201: 
+ 1202: 
+ 1203: # ── Who I like / who likes me / matches ───────────────────────────────────────
+ 1204: 
+ 1205: class WhoILikeItem(BaseModel):
+ 1206:     id: int
+ 1207:     username: str
+ 1208:     age: Optional[int] = None
+ 1209:     sex: Optional[str] = None
+ 1210:     sexuality: Optional[str] = None
+ 1211:     bio: Optional[str] = None
+ 1212:     headline: Optional[str] = None
+ 1213:     height: Optional[int] = None
+ 1214:     star_sign: Optional[str] = None
+ 1215:     photo_url: Optional[str] = None
+ 1216:     body_photo_url: Optional[str] = None
+ 1217:     like_rank: Optional[int] = None
+ 1218:     voice_note_url: Optional[str] = None
+ 1219:     # M104: phase for the rank-1 entry (only the rank-1 row has a lock).
+ 1220:     # None for non-rank-1 rows.
+ 1221:     rank_one_phase: Optional[str] = None  # 'grace' | 'locked' | None
+ 1222:     rank_one_activates_at: Optional[str] = None
+ 1223:     rank_one_expires_at: Optional[str] = None
+ 1224: 
+ 1225:     class Config:
+ 1226:         from_attributes = True
+ 1227: 
+ 1228: 
+ 1229: class WhoILikeResponse(BaseModel):
+ 1230:     users: List[WhoILikeItem]
+ 1231:     total: int
+ 1232: 
+ 1233: 
+ 1234: class RerankItem(BaseModel):
+ 1235:     username: str
+ 1236:     rank: int
+ 1237: 
+ 1238: 
+ 1239: class RerankRequest(BaseModel):
+ 1240:     rankings: List[RerankItem]
+ 1241: 
+ 1242: 
+ 1243: @router.get("/who_i_like", response_model=WhoILikeResponse)
+ 1244: async def who_i_like(
+ 1245:     current_user: User = Depends(get_current_user),
+ 1246:     db: Session = Depends(get_db),
+ 1247: ):
+ 1248:     """Return list of users the current user has liked, ordered by personal like_rank ASC.
+ 1249:     No limit on number of ranked likes."""
+ 1250:     results = (
+ 1251:         db.query(User, UserLikeStats.like_rank, Like)
+ 1252:         .join(UserLikeStats, UserLikeStats.user_likes == User.username)
+ 1253:         .join(Like, (Like.liker_id == current_user.id) & (Like.liked_id == User.id))
+ 1254:         .filter(UserLikeStats.username == current_user.username)
+ 1255:         .distinct(User.id)
+ 1256:         .order_by(
+ 1257:             UserLikeStats.like_rank.asc().nullslast(),
+ 1258:             UserLikeStats.id.asc(),
+ 1259:         )
+ 1260:         .all()
+ 1261:     )
+ 1262:     bp = _body_photo_url_map(db, [u.id for u, _, _ in results])
+ 1263:     # M104: fetch the liker's active rank-1 row once so we can stamp phase
+ 1264:     # info onto the rank-1 item. Only one rank-1 lock exists per liker.
+ 1265:     from sqlalchemy import or_
+ 1266:     now = datetime.utcnow()
+ 1267:     rank_one_lock = (
+ 1268:         db.query(RankOneLike)
+ 1269:         .filter(
+ 1270:             RankOneLike.liker_id == current_user.id,
+ 1271:             RankOneLike.status == "pending",
+ 1272:             or_(
+ 1273:                 RankOneLike.lock_activated_at.is_(None),
+ 1274:                 RankOneLike.expires_at > now,
+ 1275:             ),
+ 1276:         )
+ 1277:         .first()
+ 1278:     )
+ 1279: 
+ 1280:     items = []
+ 1281:     for u, rank, like_row in results:
+ 1282:         item = WhoILikeItem(
+ 1283:             id=u.id,
+ 1284:             username=u.username,
+ 1285:             age=u.age,
+ 1286:             sex=u.sex,
+ 1287:             sexuality=u.sexuality,
+ 1288:             bio=u.bio,
+ 1289:             headline=u.headline,
+ 1290:             height=u.height,
+ 1291:             star_sign=u.star_sign,
+ 1292:             photo_url=f"{config.BASE_URL}/photos/photoface_{u.id}.jpg",
+ 1293:             body_photo_url=bp.get(u.id),
+ 1294:             like_rank=rank,
+ 1295:             voice_note_url=f"{config.BASE_URL}/api/like/{u.id}/voice" if like_row.voice_note else None,
+ 1296:         )
+ 1297:         if rank == 1 and rank_one_lock and rank_one_lock.liked_id == u.id:
+ 1298:             item.rank_one_phase = _rank_one_phase(rank_one_lock)
+ 1299:             item.rank_one_activates_at = _iso_or_none(rank_one_lock.activates_at)
+ 1300:             item.rank_one_expires_at = _iso_or_none(rank_one_lock.expires_at)
+ 1301:         items.append(item)
+ 1302: 
+ 1303:     # Auto-create timer for rank #1 if it doesn't exist
+ 1304:     if items and items[0].like_rank == 1:
+ 1305:         existing_timer = db.query(RankOneLike).filter(
+ 1306:             RankOneLike.liker_id == current_user.id,
+ 1307:             RankOneLike.status == 'pending'
+ 1308:         ).first()
+ 1309:         if not existing_timer:
+ 1310:             from scheduler import rank_two_to_rank_one
+ 1311:             rank_two_to_rank_one(db, current_user.username)
+ 1312:             print(f"[who_i_like] Auto-created timer for {current_user.username}'s rank #1")
+ 1313: 
+ 1314:     return WhoILikeResponse(users=items, total=len(items))
+ 1315: 
+ 1316: 
+ 1317: @router.put("/like/rerank", status_code=200)
+ 1318: async def rerank_likes(
+ 1319:     req: RerankRequest,
+ 1320:     current_user: User = Depends(get_current_user),
+ 1321:     db: Session = Depends(get_db),
+ 1322: ):
+ 1323:     """Update personal like_rank for each liked user and notify affected users via WebSocket."""
+ 1324:     updated_pairs: list[tuple[int, int]] = []  # (liked_user_id, new_rank)
+ 1325: 
+ 1326:     for item in req.rankings:
+ 1327:         stat = (
+ 1328:             db.query(UserLikeStats)
+ 1329:             .filter(
+ 1330:                 UserLikeStats.username == current_user.username,
+ 1331:                 UserLikeStats.user_likes == item.username,
+ 1332:             )
+ 1333:             .first()
+ 1334:         )
+ 1335:         if stat:
+ 1336:             old_rank = stat.like_rank
+ 1337:             stat.like_rank = item.rank
+ 1338:             if old_rank != item.rank:
+ 1339:                 # Find the liked user's id for WS notification
+ 1340:                 liked_user = db.query(User).filter(User.username == item.username).first()
+ 1341:                 if liked_user:
+ 1342:                     updated_pairs.append((liked_user.id, item.rank))
+ 1343: 
+ 1344:     db.commit()
+ 1345: 
+ 1346:     # Check if someone became rank #1 — create timer entry immediately
+ 1347:     rank1_stat = db.query(UserLikeStats).filter(
+ 1348:         UserLikeStats.username == current_user.username,
+ 1349:         UserLikeStats.like_rank == 1
+ 1350:     ).first()
+ 1351: 
+ 1352:     if rank1_stat:
+ 1353:         # Check if this user already has a pending timer
+ 1354:         existing_timer = db.query(RankOneLike).filter(
+ 1355:             RankOneLike.liker_id == current_user.id,
+ 1356:             RankOneLike.status == 'pending'
+ 1357:         ).first()
+ 1358: 
+ 1359:         if not existing_timer:
+ 1360:             # Create timer for new rank #1
+ 1361:             from scheduler import rank_two_to_rank_one
+ 1362:             rank_two_to_rank_one(db, current_user.username)
+ 1363:             print(f"[rerank] Created immediate timer for {current_user.username}'s new rank #1")
+ 1364: 
+ 1365:     # Broadcast rank updates to affected users
+ 1366:     for liked_user_id, new_rank in updated_pairs:
+ 1367:         await manager.send_rank_update(
+ 1368:             liked_user_id,
+ 1369:             {
+ 1370:                 "type": "rank_update",
+ 1371:                 "from_username": current_user.username,
+ 1372:                 "new_rank": new_rank,
+ 1373:             },
+ 1374:         )
+ 1375: 
+ 1376:     # Bump WIL version to trigger refresh
+ 1377:     bump_wil_version(current_user.id)
+ 1378: 
+ 1379:     return {"status": "reranked"}
+ 1380: 
+ 1381: 
+ 1382: class WhoLikesMeItem(BaseModel):
+ 1383:     id: int
+ 1384:     username: str
+ 1385:     age: Optional[int] = None
+ 1386:     sex: Optional[str] = None
+ 1387:     sexuality: Optional[str] = None
+ 1388:     bio: Optional[str] = None
+ 1389:     headline: Optional[str] = None
+ 1390:     height: Optional[int] = None
+ 1391:     star_sign: Optional[str] = None
+ 1392:     photo_url: Optional[str] = None
+ 1393:     body_photo_url: Optional[str] = None
+ 1394:     my_rank_to_them: Optional[int] = None  # rank the sender gave to current user
+ 1395:     rank_one_id: Optional[int] = None
+ 1396:     timer_started_at: Optional[str] = None
+ 1397:     expires_at: Optional[str] = None
+ 1398:     rank_one_status: Optional[str] = None
+ 1399:     voice_note_url: Optional[str] = None
+ 1400: 
+ 1401:     class Config:
+ 1402:         from_attributes = True
+ 1403: 
+ 1404: 
+ 1405: class WhoLikesMeResponse(BaseModel):
+ 1406:     users: List[WhoLikesMeItem]
+ 1407:     total: int
+ 1408: 
+ 1409: 
+ 1410: @router.get("/who_likes_me", response_model=WhoLikesMeResponse)
+ 1411: async def who_likes_me(
+ 1412:     current_user: User = Depends(get_current_user),
+ 1413:     db: Session = Depends(get_db),
+ 1414: ):
+ 1415:     """Return list of users who have liked the current user, with the rank they assigned."""
+ 1416:     from datetime import datetime
+ 1417:     now = datetime.utcnow()
+ 1418: 
+ 1419:     results = (
+ 1420:         db.query(User, UserLikeStats.like_rank, RankOneLike, Like)
+ 1421:         .join(Like, Like.liker_id == User.id)
+ 1422:         .outerjoin(
+ 1423:             UserLikeStats,
+ 1424:             (UserLikeStats.username == User.username) &
+ 1425:             (UserLikeStats.user_likes == current_user.username),
+ 1426:         )
+ 1427:         .outerjoin(
+ 1428:             RankOneLike,
+ 1429:             (RankOneLike.liker_id == User.id) &
+ 1430:             (RankOneLike.liked_id == current_user.id) &
+ 1431:             (RankOneLike.status == "pending") &
+ 1432:             (RankOneLike.expires_at > now),
+ 1433:         )
+ 1434:         .filter(Like.liked_id == current_user.id)
+ 1435:         .distinct(User.id)
+ 1436:         .order_by(UserLikeStats.like_rank.asc().nullslast())
+ 1437:         .all()
+ 1438:     )
+ 1439:     bp = _body_photo_url_map(db, [u.id for u, _, _, _ in results])
+ 1440:     items = [
+ 1441:         WhoLikesMeItem(
+ 1442:             id=u.id,
+ 1443:             username=u.username,
+ 1444:             age=u.age,
+ 1445:             sex=u.sex,
+ 1446:             sexuality=u.sexuality,
+ 1447:             bio=u.bio,
+ 1448:             headline=u.headline,
+ 1449:             height=u.height,
+ 1450:             star_sign=u.star_sign,
+ 1451:             photo_url=f"{config.BASE_URL}/photos/photoface_{u.id}.jpg",
+ 1452:             body_photo_url=bp.get(u.id),
+ 1453:             my_rank_to_them=rank if rank and rank > 0 else None,
+ 1454:             rank_one_id=lock.id if lock else None,
+ 1455:             timer_started_at=lock.timer_started_at.isoformat() + "Z" if lock else None,
+ 1456:             expires_at=lock.expires_at.isoformat() + "Z" if lock else None,
+ 1457:             rank_one_status=lock.status if lock else None,
+ 1458:             voice_note_url=f"{config.BASE_URL}/api/voice/{like_row.voice_note}" if like_row.voice_note else None,
+ 1459:         )
+ 1460:         for u, rank, lock, like_row in results
+ 1461:     ]
+ 1462:     return WhoLikesMeResponse(users=items, total=len(items))
+ 1463: 
+ 1464: 
+ 1465: class MatchListItem(BaseModel):
+ 1466:     """Like UserListItem, plus voice_note_url for the like the OTHER user
+ 1467:     sent to me (so the FE can show a play button on the match card).
+ 1468:     Kept separate from UserListItem so /api/users (Discover) doesn't
+ 1469:     leak voice_note_url for users I haven't liked back yet."""
+ 1470:     id: int
+ 1471:     username: str
+ 1472:     age: Optional[int] = None
+ 1473:     sex: Optional[str] = None
+ 1474:     sexuality: Optional[str] = None
+ 1475:     bio: Optional[str] = None
+ 1476:     headline: Optional[str] = None
+ 1477:     height: Optional[int] = None
+ 1478:     star_sign: Optional[str] = None
+ 1479:     photo_url: Optional[str] = None
+ 1480:     body_photo_url: Optional[str] = None
+ 1481:     voice_note_url: Optional[str] = None
+ 1482: 
+ 1483:     class Config:
+ 1484:         from_attributes = True
+ 1485: 
+ 1486: 
+ 1487: class MatchesListResponse(BaseModel):
+ 1488:     users: List[MatchListItem]
+ 1489:     total: int
+ 1490:     page: int
+ 1491:     per_page: int
+ 1492:     has_more: bool
+ 1493: 
+ 1494: 
+ 1495: @router.get("/matches", response_model=MatchesListResponse)
+ 1496: async def get_matches(
+ 1497:     page: int = 1,
+ 1498:     per_page: int = 30,
+ 1499:     current_user: User = Depends(get_current_user),
+ 1500:     db: Session = Depends(get_db),
+ 1501: ):
+ 1502:     """Return users matched with the current user. Each item carries the
+ 1503:     voice_note_url from the like the OTHER user sent TO current_user
+ 1504:     (per M26-reply Q4: "what was sent to me")."""
+ 1505:     from sqlalchemy import or_
+ 1506: 
+ 1507:     query = (
+ 1508:         db.query(User)
+ 1509:         .join(
+ 1510:             Match,
+ 1511:             or_(
+ 1512:                 (Match.user1_id == current_user.id) & (Match.user2_id == User.id),
+ 1513:                 (Match.user2_id == current_user.id) & (Match.user1_id == User.id),
+ 1514:             ),
+ 1515:         )
+ 1516:         .order_by(Match.created_at.asc())
+ 1517:     )
+ 1518: 
+ 1519:     total = query.count()
+ 1520:     offset = (page - 1) * per_page
+ 1521:     users = query.offset(offset).limit(per_page).all()
+ 1522: 
+ 1523:     bp = _body_photo_url_map(db, [u.id for u in users])
+ 1524: 
+ 1525:     # Single query: for each matched user u, find Like(liker=u.id, liked=current_user.id)
+ 1526:     # to get the voice they sent. Returns {liker_id: voice_filename}.
+ 1527:     voice_by_user: dict[int, str] = {}
+ 1528:     if users:
+ 1529:         like_rows = (
+ 1530:             db.query(Like.liker_id, Like.voice_note)
+ 1531:             .filter(
+ 1532:                 Like.liker_id.in_([u.id for u in users]),
+ 1533:                 Like.liked_id == current_user.id,
+ 1534:                 Like.voice_note.isnot(None),
+ 1535:             )
+ 1536:             .all()
+ 1537:         )
+ 1538:         voice_by_user = {liker_id: filename for liker_id, filename in like_rows}
+ 1539: 
+ 1540:     items = [
+ 1541:         MatchListItem(
+ 1542:             id=u.id, username=u.username, age=u.age, sex=u.sex,
+ 1543:             sexuality=u.sexuality, bio=u.bio, headline=u.headline,
+ 1544:             height=u.height, star_sign=u.star_sign,
+ 1545:             photo_url=f"{config.BASE_URL}/photos/photoface_{u.id}.jpg",
+ 1546:             body_photo_url=bp.get(u.id),
+ 1547:             voice_note_url=(
+ 1548:                 f"{config.BASE_URL}/api/voice/{voice_by_user[u.id]}"
+ 1549:                 if u.id in voice_by_user else None
+ 1550:             ),
+ 1551:         )
+ 1552:         for u in users
+ 1553:     ]
+ 1554:     return MatchesListResponse(
+ 1555:         users=items, total=total, page=page, per_page=per_page,
+ 1556:         has_more=(offset + per_page) < total,
+ 1557:     )
+ 1558: 
+ 1559: 
+ 1560: # ── WebSocket endpoint ───────────────────────────────────────────────────────
+ 1561: 
+ 1562: @router.websocket("/ws/rank_updates/{user_id}")
+ 1563: async def rank_updates_ws(websocket: WebSocket, user_id: int):
+ 1564:     """WebSocket endpoint — clients subscribe to receive live rank updates."""
+ 1565:     await manager.connect(user_id, websocket)
+ 1566:     try:
+ 1567:         while True:
+ 1568:             await websocket.receive_text()  # keep-alive ping/pong
+ 1569:     except WebSocketDisconnect:
+ 1570:         manager.disconnect(user_id)
+ 1571: 
+ 1572: 
+ 1573: @router.websocket("/ws/wil")
+ 1574: async def wil_ws(
+ 1575:     websocket: WebSocket,
+ 1576:     token: str,
+ 1577:     db: Session = Depends(get_db),
+ 1578: ):
+ 1579:     """Real-time Who-I-Like notifications.
+ 1580: 
+ 1581:     Clients connect with ?token=<jwt> and receive a `{"event": "wil_changed"}`
+ 1582:     message whenever this user's WIL list is mutated server-side. Replaces the
+ 1583:     2-second version polling loop with zero-overhead push notifications.
+ 1584:     """
+ 1585:     try:
+ 1586:         jwt_payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+ 1587:         username: str = jwt_payload.get("sub")
+ 1588:         if not username:
+ 1589:             await websocket.close(code=1008)
+ 1590:             return
+ 1591:         current_user = db.query(User).filter(User.username == username).first()
+ 1592:         if not current_user:
+ 1593:             await websocket.close(code=1008)
+ 1594:             return
+ 1595:     except JWTError:
+ 1596:         await websocket.close(code=1008)
+ 1597:         return
+ 1598: 
+ 1599:     await wil_manager.connect(current_user.id, websocket)
+ 1600:     try:
+ 1601:         while True:
+ 1602:             # Client messages are ignored — connection is push-only. The
+ 1603:             # receive_text() call serves as a keep-alive / disconnect detector.
+ 1604:             await websocket.receive_text()
+ 1605:     except WebSocketDisconnect:
+ 1606:         wil_manager.disconnect(current_user.id, websocket)
+ 1607:     except Exception:
+ 1608:         wil_manager.disconnect(current_user.id, websocket)
+ 1609: 
+ 1610: 
+ 1611: @router.get("/users/{user_id}/body_photo")
+ 1612: async def get_user_body_photo(
+ 1613:     user_id: int,
+ 1614:     current_user: User = Depends(get_current_user),
+ 1615:     db: Session = Depends(get_db),
+ 1616: ):
+ 1617:     """Serve the user's full_length gallery photo.
+ 1618: 
+ 1619:     Mirrors /api/users/{id}/photo: auth required, any authenticated user can
+ 1620:     view any user's body photo (same policy as face photo — appropriate for
+ 1621:     a dating app where users browse profiles).
+ 1622:     """
+ 1623:     media = db.query(UserMedia).filter(
+ 1624:         UserMedia.user_id == user_id,
+ 1625:         UserMedia.slot == "full_length",
+ 1626:     ).first()
+ 1627:     if not media or not media.filename:
+ 1628:         raise HTTPException(status_code=404, detail="Body photo not found")
+ 1629:     file_path = os.path.join(MEDIA_DIR, media.filename)
+ 1630:     if not os.path.exists(file_path):
+ 1631:         raise HTTPException(status_code=404, detail="Body photo file not found")
+ 1632:     return FileResponse(file_path, media_type="image/jpeg")
+ 1633: 
+ 1634: 
+ 1635: @router.get("/users/{user_id}/photo")
+ 1636: async def get_user_photo(
+ 1637:     user_id: int,
+ 1638:     current_user: User = Depends(get_current_user),
+ 1639:     db: Session = Depends(get_db)
+ 1640: ):
+ 1641:     """Serve the user's profile photo from the photos/ directory."""
+ 1642:     # SECURITY FIX: Added authentication requirement
+ 1643:     # Note: All authenticated users can view any user's profile photo
+ 1644:     # This is appropriate for a dating app where users browse profiles
+ 1645:     photo = db.query(UserPhoto).filter(UserPhoto.user_id == user_id).first()
+ 1646:     if not photo or not photo.photo_filename:
+ 1647:         raise HTTPException(status_code=404, detail="Photo not found")
+ 1648:     file_path = os.path.join(PHOTOS_DIR, photo.photo_filename)
+ 1649:     if not os.path.exists(file_path):
+ 1650:         raise HTTPException(status_code=404, detail="Photo file not found")
+ 1651:     return FileResponse(file_path, media_type="image/jpeg")
+ 1652: 
+ 1653: 
+ 1654: # ── Chat ─────────────────────────────────────────────────────────────────────
+ 1655: 
+ 1656: class MessageResponse(BaseModel):
+ 1657:     id: int
+ 1658:     sender_id: int
+ 1659:     content: str
+ 1660:     created_at: str
+ 1661:     is_read: bool
+ 1662: 
+ 1663: 
+ 1664: class SendMessageRequest(BaseModel):
+ 1665:     content: str
+ 1666: 
+ 1667: 
+ 1668: def _is_mutual_match(db: Session, user_a_id: int, user_b_id: int) -> bool:
+ 1669:     u1, u2 = min(user_a_id, user_b_id), max(user_a_id, user_b_id)
+ 1670:     return db.query(Match).filter(Match.user1_id == u1, Match.user2_id == u2).first() is not None
+ 1671: 
+ 1672: 
+ 1673: @router.get("/chat/{user_id}", response_model=List[MessageResponse])
+ 1674: async def get_chat_history(
+ 1675:     user_id: int,
+ 1676:     current_user: User = Depends(get_current_user),
+ 1677:     db: Session = Depends(get_db),
+ 1678: ):
+ 1679:     """Return message history between current user and user_id (mutual matches only)."""
+ 1680:     if not _is_mutual_match(db, current_user.id, user_id):
+ 1681:         raise HTTPException(status_code=403, detail="Not a mutual match")
+ 1682:     messages = (
+ 1683:         db.query(Message)
+ 1684:         .filter(
+ 1685:             ((Message.sender_id == current_user.id) & (Message.receiver_id == user_id)) |
+ 1686:             ((Message.sender_id == user_id) & (Message.receiver_id == current_user.id))
+ 1687:         )
+ 1688:         .order_by(Message.created_at.asc())
+ 1689:         .all()
+ 1690:     )
+ 1691:     return [
+ 1692:         MessageResponse(
+ 1693:             id=m.id,
+ 1694:             sender_id=m.sender_id,
+ 1695:             content=m.content,
+ 1696:             created_at=m.created_at.isoformat(),
+ 1697:             is_read=m.is_read,
+ 1698:         )
+ 1699:         for m in messages
+ 1700:     ]
+ 1701: 
+ 1702: 
+ 1703: @router.post("/chat/{user_id}", response_model=MessageResponse, status_code=status.HTTP_201_CREATED)
+ 1704: async def send_message(
+ 1705:     user_id: int,
+ 1706:     req: SendMessageRequest,
+ 1707:     current_user: User = Depends(get_current_user),
+ 1708:     db: Session = Depends(get_db),
+ 1709: ):
+ 1710:     """Send a message to user_id (mutual matches only)."""
+ 1711:     if not _is_mutual_match(db, current_user.id, user_id):
+ 1712:         raise HTTPException(status_code=403, detail="Not a mutual match")
+ 1713:     if not req.content.strip():
+ 1714:         raise HTTPException(status_code=400, detail="Message content cannot be empty")
+ 1715:     msg = Message(sender_id=current_user.id, receiver_id=user_id, content=req.content.strip())
+ 1716:     db.add(msg)
+ 1717:     db.commit()
+ 1718:     db.refresh(msg)
+ 1719:     msg_out = MessageResponse(
+ 1720:         id=msg.id,
+ 1721:         sender_id=msg.sender_id,
+ 1722:         content=msg.content,
+ 1723:         created_at=msg.created_at.isoformat(),
+ 1724:         is_read=msg.is_read,
+ 1725:     )
+ 1726:     await chat_manager.send_to_user(user_id, {"type": "message", **msg_out.model_dump()})
+ 1727:     return msg_out
+ 1728: 
+ 1729: 
+ 1730: @router.websocket("/ws/chat/{user_id}")
+ 1731: async def chat_ws(
+ 1732:     websocket: WebSocket,
+ 1733:     user_id: int,
+ 1734:     token: str,
+ 1735:     db: Session = Depends(get_db),
+ 1736: ):
+ 1737:     """Real-time chat WebSocket. Authenticate via ?token=<jwt>. user_id is the recipient."""
+ 1738:     try:
+ 1739:         jwt_payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+ 1740:         username: str = jwt_payload.get("sub")
+ 1741:         if not username:
+ 1742:             await websocket.close(code=1008)
+ 1743:             return
+ 1744:         current_user = db.query(User).filter(User.username == username).first()
+ 1745:         if not current_user:
+ 1746:             await websocket.close(code=1008)
+ 1747:             return
+ 1748:     except JWTError:
+ 1749:         await websocket.close(code=1008)
+ 1750:         return
+ 1751: 
+ 1752:     if not _is_mutual_match(db, current_user.id, user_id):
+ 1753:         await websocket.close(code=1008)
+ 1754:         return
+ 1755: 
+ 1756:     await chat_manager.connect(current_user.id, websocket)
+ 1757:     try:
+ 1758:         while True:
+ 1759:             data = await websocket.receive_json()
+ 1760:             content = (data.get("content") or "").strip()
+ 1761:             if not content:
+ 1762:                 continue
+ 1763:             msg = Message(sender_id=current_user.id, receiver_id=user_id, content=content)
+ 1764:             db.add(msg)
+ 1765:             db.commit()
+ 1766:             db.refresh(msg)
+ 1767:             msg_out = {
+ 1768:                 "type": "message",
+ 1769:                 "id": msg.id,
+ 1770:                 "sender_id": msg.sender_id,
+ 1771:                 "content": msg.content,
+ 1772:                 "created_at": msg.created_at.isoformat(),
+ 1773:                 "is_read": msg.is_read,
+ 1774:             }
+ 1775:             await websocket.send_json(msg_out)
+ 1776:             await chat_manager.send_to_user(user_id, msg_out)
+ 1777:     except WebSocketDisconnect:
+ 1778:         chat_manager.disconnect(current_user.id)
+ 1779:     except Exception:
+ 1780:         chat_manager.disconnect(current_user.id)
+ 1781: 
+ 1782: 
+ 1783: # ── Voice note endpoints ─────────────────────────────────────────────────────
+ 1784: 
+ 1785: @router.post("/like/{liked_user_id}/voice", status_code=status.HTTP_200_OK)
+ 1786: async def upload_voice_note(
+ 1787:     liked_user_id: int,
+ 1788:     file: UploadFile = File(...),
+ 1789:     current_user: User = Depends(get_current_user),
+ 1790:     db: Session = Depends(get_db),
+ 1791: ):
+ 1792:     """Attach a voice note to an existing like. Saves audio file and stores filename on the like row."""
+ 1793:     trace_id = uuid.uuid4().hex
+ 1794:     t_start = time.time()
+ 1795:     upload_filename = getattr(file, "filename", None)
+ 1796:     content_type = getattr(file, "content_type", None)
+ 1797:     logger.info(
+ 1798:         f"[voice-upload start] trace={trace_id} liker={current_user.id} "
+ 1799:         f"liked={liked_user_id} filename={upload_filename!r} ct={content_type!r}"
+ 1800:     )
+ 1801:     try:
+ 1802:         like = db.query(Like).filter(
+ 1803:             Like.liker_id == current_user.id,
+ 1804:             Like.liked_id == liked_user_id,
+ 1805:         ).first()
+ 1806:         if not like:
+ 1807:             raise HTTPException(status_code=404, detail="Like not found — like the user first")
+ 1808: 
+ 1809:         ext = os.path.splitext(upload_filename or "audio.m4a")[1] or ".m4a"
+ 1810:         filename = f"like_{current_user.id}_{liked_user_id}{ext}"
+ 1811:         file_path = os.path.join(VOICE_NOTES_DIR, filename)
+ 1812: 
+ 1813:         contents = await file.read()
+ 1814:         size_bytes = len(contents)
+ 1815:         with open(file_path, "wb") as f:
+ 1816:             f.write(contents)
+ 1817: 
+ 1818:         like.voice_note = filename
+ 1819:         db.commit()
+ 1820:         dur_ms = int((time.time() - t_start) * 1000)
+ 1821:         logger.info(
+ 1822:             f"[voice-upload done] trace={trace_id} liker={current_user.id} "
+ 1823:             f"liked={liked_user_id} saved={filename} bytes={size_bytes} dur_ms={dur_ms}"
+ 1824:         )
+ 1825: 
+ 1826:         return {"status": "ok", "filename": filename}
+ 1827:     except HTTPException:
+ 1828:         raise
+ 1829:     except Exception:
+ 1830:         tb = traceback.format_exc()
+ 1831:         dur_ms = int((time.time() - t_start) * 1000)
+ 1832:         logger.error(
+ 1833:             f"[voice-upload FAIL] trace={trace_id} liker={current_user.id} "
+ 1834:             f"liked={liked_user_id} filename={upload_filename!r} ct={content_type!r} "
+ 1835:             f"dur_ms={dur_ms}\n{tb}"
+ 1836:         )
+ 1837:         raise HTTPException(
+ 1838:             status_code=500,
+ 1839:             detail={"detail": "Internal error", "trace_id": trace_id},
+ 1840:         )
+ 1841: 
+ 1842: 
+ 1843: @router.get("/like/{liked_user_id}/voice")
+ 1844: async def get_like_voice_note(
+ 1845:     liked_user_id: int,
+ 1846:     current_user: User = Depends(get_current_user),
+ 1847:     db: Session = Depends(get_db),
+ 1848: ):
+ 1849:     """Return the voice note for current_user's like of liked_user_id."""
+ 1850:     like = db.query(Like).filter(
+ 1851:         Like.liker_id == current_user.id,
+ 1852:         Like.liked_id == liked_user_id,
+ 1853:     ).first()
+ 1854:     if not like:
+ 1855:         raise HTTPException(status_code=404, detail="Like not found")
+ 1856:     if not like.voice_note:
+ 1857:         raise HTTPException(status_code=404, detail="No voice note for this like")
+ 1858:     file_path = os.path.join(VOICE_NOTES_DIR, like.voice_note)
+ 1859:     if not os.path.exists(file_path):
+ 1860:         raise HTTPException(status_code=404, detail="Voice note file not found")
+ 1861:     return FileResponse(file_path, media_type="audio/mp4", filename=like.voice_note)
+ 1862: 
+ 1863: 
+ 1864: @router.get("/voice/{filename}")
+ 1865: async def get_voice_note(
+ 1866:     filename: str,
+ 1867:     current_user: User = Depends(get_current_user),
+ 1868:     db: Session = Depends(get_db),
+ 1869: ):
+ 1870:     """Serve a voice note audio file. Requires authentication AND that
+ 1871:     current_user is either the liker or the liked party of the like that
+ 1872:     owns this file. Prevents arbitrary authenticated users from grabbing
+ 1873:     voice notes by guessing filenames."""
+ 1874:     safe_filename = os.path.basename(filename)
+ 1875:     like = db.query(Like).filter(Like.voice_note == safe_filename).first()
+ 1876:     if like is None:
+ 1877:         raise HTTPException(status_code=404, detail="Voice note not found")
+ 1878:     if current_user.id not in (like.liker_id, like.liked_id):
+ 1879:         raise HTTPException(status_code=403, detail="Not your voice note")
+ 1880:     file_path = os.path.join(VOICE_NOTES_DIR, safe_filename)
+ 1881:     if not os.path.exists(file_path):
+ 1882:         raise HTTPException(status_code=404, detail="Voice note file missing on disk")
+ 1883:     return FileResponse(file_path, media_type="audio/mp4")
+ 1884: 
+ 1885: 
+ 1886: @router.get("/stream-token")
+ 1887: async def get_stream_token(current_user: User = Depends(get_current_user)):
+ 1888:     """Return a Stream Chat token for the authenticated user."""
+ 1889:     from stream_chat import StreamChat
+ 1890:     api_key = config.config.integrations.stream_api_key or ""
+ 1891:     api_secret = config.config.integrations.stream_api_secret or ""
+ 1892:     client = StreamChat(api_key=api_key, api_secret=api_secret)
+ 1893:     username = current_user.username
+ 1894:     client.upsert_user({"id": username, "name": username})
+ 1895:     token = client.create_token(username)
+ 1896:     return {"token": token, "user_id": username, "api_key": api_key}
+ 1897: 
+ 1898: 
+ 1899: # ── Daily Lock ────────────────────────────────────────────────────────────────
+ 1900: 
+ 1901: class RankOneLikeUserInfo(BaseModel):
+ 1902:     id: int
+ 1903:     username: str
+ 1904:     age: Optional[int] = None
+ 1905:     sex: Optional[str] = None
+ 1906:     photo_url: Optional[str] = None
+ 1907: 
+ 1908: 
+ 1909: class RankOneLikeInfo(BaseModel):
+ 1910:     rank_one_id: int
+ 1911:     timer_started_at: str
+ 1912:     # M104: two-phase. expires_at is NULL while in grace phase; activates_at
+ 1913:     # marks when grace ends. phase is the derived convenience field.
+ 1914:     expires_at: Optional[str] = None
+ 1915:     activates_at: Optional[str] = None
+ 1916:     lock_activated_at: Optional[str] = None
+ 1917:     phase: str  # 'grace' | 'locked'
+ 1918:     status: str
+ 1919:     user: RankOneLikeUserInfo
+ 1920: 
+ 1921: 
+ 1922: class RankOneLikeResponse(BaseModel):
+ 1923:     as_liker: Optional[RankOneLikeInfo] = None
+ 1924:     as_liked: Optional[RankOneLikeInfo] = None
+ 1925: 
+ 1926: 
+ 1927: class RankOneRespondRequest(BaseModel):
+ 1928:     action: str  # "like" or "ignore"
+ 1929: 
+ 1930: 
+ 1931: def _rank_one_user_info(user: User) -> RankOneLikeUserInfo:
+ 1932:     return RankOneLikeUserInfo(
+ 1933:         id=user.id,
+ 1934:         username=user.username,
+ 1935:         age=user.age,
+ 1936:         sex=user.sex,
+ 1937:         photo_url=f"{config.BASE_URL}/photos/photoface_{user.id}.jpg",
+ 1938:     )
+ 1939: 
+ 1940: 
+ 1941: def _rank_one_phase(lock: RankOneLike) -> str:
+ 1942:     """M104: row is in GRACE until lock_activated_at is set by the
+ 1943:     activation tick; LOCKED thereafter."""
+ 1944:     return "grace" if lock.lock_activated_at is None else "locked"
+ 1945: 
+ 1946: 
+ 1947: def _iso_or_none(dt) -> Optional[str]:
+ 1948:     return dt.isoformat() + "Z" if dt is not None else None
+ 1949: 
+ 1950: 
+ 1951: @router.get("/rank-one-status", response_model=RankOneLikeResponse)
+ 1952: async def get_rank_one_status(
+ 1953:     current_user: User = Depends(get_current_user),
+ 1954:     db: Session = Depends(get_db),
+ 1955: ):
+ 1956:     """Return the current user's active rank #1 timer(s) — as sender or as receiver."""
+ 1957:     from datetime import datetime
+ 1958: 
+ 1959:     now = datetime.utcnow()
+ 1960: 
+ 1961:     # M104: include both GRACE (lock_activated_at IS NULL) and LOCKED rows
+ 1962:     # that aren't yet expired. A row is "active" iff it's pending AND
+ 1963:     # (still in grace OR locked with time remaining).
+ 1964:     from sqlalchemy import or_
+ 1965:     _active = lambda q: q.filter(
+ 1966:         RankOneLike.status == "pending",
+ 1967:         or_(
+ 1968:             RankOneLike.lock_activated_at.is_(None),
+ 1969:             RankOneLike.expires_at > now,
+ 1970:         ),
+ 1971:     )
+ 1972: 
+ 1973:     as_liker_rank_entry = _active(
+ 1974:         db.query(RankOneLike).filter(RankOneLike.liker_id == current_user.id)
+ 1975:     ).first()
+ 1976: 
+ 1977:     as_liked_rank_entry = _active(
+ 1978:         db.query(RankOneLike).filter(RankOneLike.liked_id == current_user.id)
+ 1979:     ).first()
+ 1980: 
+ 1981:     def _build_info(entry, other_user):
+ 1982:         return RankOneLikeInfo(
+ 1983:             rank_one_id=entry.id,
+ 1984:             timer_started_at=entry.timer_started_at.isoformat() + "Z",
+ 1985:             expires_at=_iso_or_none(entry.expires_at),
+ 1986:             activates_at=_iso_or_none(entry.activates_at),
+ 1987:             lock_activated_at=_iso_or_none(entry.lock_activated_at),
+ 1988:             phase=_rank_one_phase(entry),
+ 1989:             status=entry.status,
+ 1990:             user=_rank_one_user_info(other_user),
+ 1991:         )
+ 1992: 
+ 1993:     as_liker = None
+ 1994:     if as_liker_rank_entry:
+ 1995:         liked_user = db.query(User).filter(User.id == as_liker_rank_entry.liked_id).first()
+ 1996:         if liked_user:
+ 1997:             as_liker = _build_info(as_liker_rank_entry, liked_user)
+ 1998: 
+ 1999:     as_liked = None
+ 2000:     if as_liked_rank_entry:
+ 2001:         liker_user = db.query(User).filter(User.id == as_liked_rank_entry.liker_id).first()
+ 2002:         if liker_user:
+ 2003:             as_liked = _build_info(as_liked_rank_entry, liker_user)
+ 2004: 
+ 2005:     return RankOneLikeResponse(as_liker=as_liker, as_liked=as_liked)
+ 2006: 
+ 2007: 
+ 2008: @router.post("/rank-one/{rank_one_id}/respond", status_code=200)
+ 2009: async def respond_to_rank_one(
+ 2010:     rank_one_id: int,
+ 2011:     req: RankOneRespondRequest,
+ 2012:     current_user: User = Depends(get_current_user),
+ 2013:     db: Session = Depends(get_db),
+ 2014: ):
+ 2015:     """Receiver responds to incoming rank #1. action='like' creates a match; action='ignore' expires the entry."""
+ 2016:     if req.action not in ("like", "ignore"):
+ 2017:         raise HTTPException(status_code=400, detail="action must be 'like' or 'ignore'")
+ 2018: 
+ 2019:     rank_entry = db.query(RankOneLike).filter(RankOneLike.id == rank_one_id).first()
+ 2020:     if not rank_entry:
+ 2021:         raise HTTPException(status_code=404, detail="Rank one entry not found")
+ 2022:     if rank_entry.liked_id != current_user.id:
+ 2023:         raise HTTPException(status_code=403, detail="Only the rank one recipient can respond")
+ 2024:     if rank_entry.status != "pending":
+ 2025:         raise HTTPException(status_code=400, detail=f"Rank one entry is already {rank_entry.status}")
+ 2026: 
+ 2027:     from datetime import datetime
+ 2028:     if rank_entry.expires_at < datetime.utcnow():
+ 2029:         rank_entry.status = "like_expired"
+ 2030:         db.commit()
+ 2031:         raise HTTPException(status_code=400, detail="Rank one timer has expired")
+ 2032: 
+ 2033:     liker = db.query(User).filter(User.id == rank_entry.liker_id).first()
+ 2034:     if not liker:
+ 2035:         raise HTTPException(status_code=404, detail="Liker not found")
+ 2036: 
+ 2037:     # Remove the original like and stats record in both branches
+ 2038:     like = db.query(Like).filter(
+ 2039:         Like.liker_id == rank_entry.liker_id,
+ 2040:         Like.liked_id == rank_entry.liked_id,
+ 2041:     ).first()
+ 2042:     if like:
+ 2043:         db.delete(like)
+ 2044: 
+ 2045:     stat = db.query(UserLikeStats).filter(
+ 2046:         UserLikeStats.username == liker.username,
+ 2047:         UserLikeStats.user_likes == current_user.username,
+ 2048:     ).first()
+ 2049:     if stat:
+ 2050:         db.delete(stat)
+ 2051: 
+ 2052:     if req.action == "like":
+ 2053:         u1, u2 = min(rank_entry.liker_id, rank_entry.liked_id), max(rank_entry.liker_id, rank_entry.liked_id)
+ 2054:         existing_match = db.query(Match).filter(Match.user1_id == u1, Match.user2_id == u2).first()
+ 2055:         if not existing_match:
+ 2056:             db.add(Match(user1_id=u1, user2_id=u2))
+ 2057:         rank_entry.status = "matched"
+ 2058:         db.commit()
+ 2059:         _recalculate_user_ranks(db, liker.username)
+ 2060:         return {"status": "matched"}
+ 2061: 
+ 2062:     # action == "ignore"
+ 2063:     rank_entry.status = "like_expired"
+ 2064:     db.commit()
+ 2065:     _recalculate_user_ranks(db, liker.username)
+ 2066:     return {"status": "like_expired"}
+ 2067: 
+ 2068: 
+ 2069: @router.post("/rank-one/trigger-expire", status_code=200)
+ 2070: async def trigger_expire_rank_one_likes(
+ 2071:     current_user: User = Depends(get_current_user),
+ 2072:     db: Session = Depends(get_db),
+ 2073: ):
+ 2074:     """Expire any pending locks for the current user that are past their deadline.
+ 2075: 
+ 2076:     Mirrors scheduler.expire_rank_one_likes() but scoped to the authenticated user
+ 2077:     (as either liker or liked). Used by the client when the countdown hits zero
+ 2078:     so the UI can refresh immediately without waiting for the hourly job.
+ 2079:     """
+ 2080:     now = datetime.utcnow()
+ 2081: 
+ 2082:     expired = (
+ 2083:         db.query(RankOneLike)
+ 2084:         .filter(
+ 2085:             RankOneLike.expires_at < now,
+ 2086:             RankOneLike.status == "pending",
+ 2087:             (RankOneLike.liker_id == current_user.id)
+ 2088:             | (RankOneLike.liked_id == current_user.id),
+ 2089:         )
+ 2090:         .all()
+ 2091:     )
+ 2092: 
+ 2093:     affected_likers: set[str] = set()
+ 2094:     affected_liker_ids: set[int] = set()
+ 2095: 
+ 2096:     for entry in expired:
+ 2097:         liker = db.query(User).filter(User.id == entry.liker_id).first()
+ 2098:         liked = db.query(User).filter(User.id == entry.liked_id).first()
+ 2099: 
+ 2100:         if liker and liked:
+ 2101:             like = db.query(Like).filter(
+ 2102:                 Like.liker_id == entry.liker_id,
+ 2103:                 Like.liked_id == entry.liked_id,
+ 2104:             ).first()
+ 2105:             if like:
+ 2106:                 db.delete(like)
+ 2107: 
+ 2108:             stat = db.query(UserLikeStats).filter(
+ 2109:                 UserLikeStats.username == liker.username,
+ 2110:                 UserLikeStats.user_likes == liked.username,
+ 2111:             ).first()
+ 2112:             if stat:
+ 2113:                 db.delete(stat)
+ 2114: 
+ 2115:             affected_likers.add(liker.username)
+ 2116:             affected_liker_ids.add(liker.id)
+ 2117: 
+ 2118:         entry.status = "like_expired"
+ 2119: 
+ 2120:     db.commit()
+ 2121: 
+ 2122:     from scheduler import rank_two_to_rank_one
+ 2123:     relocked = 0
+ 2124:     for username in affected_likers:
+ 2125:         _recalculate_user_ranks(db, username)
+ 2126:         if rank_two_to_rank_one(db, username):
+ 2127:             relocked += 1
+ 2128: 
+ 2129:     # Notify every affected user's WIL listener that their list changed.
+ 2130:     for uid in affected_liker_ids:
+ 2131:         bump_wil_version(uid)
+ 2132: 
+ 2133:     return {"status": "ok", "expired": len(expired), "relocked": relocked}
+ 2134: 
+ 2135: 
+ 2136: # ── Gallery ───────────────────────────────────────────────────────────────────
+ 2137: 
+ 2138: @router.get("/gallery")
+ 2139: async def get_gallery(
+ 2140:     current_user: User = Depends(get_current_user),
+ 2141:     db: Session = Depends(get_db),
+ 2142: ):
+ 2143:     """Return current user's gallery slots as {slot: filename_or_null}."""
+ 2144:     rows = db.query(UserMedia).filter(UserMedia.user_id == current_user.id).all()
+ 2145:     filled = {r.slot: r.filename for r in rows}
+ 2146:     return {slot: filled.get(slot) for slot in VALID_GALLERY_SLOTS}
+ 2147: 
+ 2148: 
+ 2149: @router.post("/gallery/{slot}", status_code=200)
+ 2150: async def upload_gallery_slot(
+ 2151:     slot: str,
+ 2152:     file: UploadFile = File(...),
+ 2153:     current_user: User = Depends(get_current_user),
+ 2154:     db: Session = Depends(get_db),
+ 2155: ):
+ 2156:     """Upload (upsert) media for a gallery slot."""
+ 2157:     if slot not in VALID_GALLERY_SLOTS:
+ 2158:         raise HTTPException(
+ 2159:             status_code=400,
+ 2160:             detail=f"Invalid slot. Must be one of: {', '.join(sorted(VALID_GALLERY_SLOTS))}",
+ 2161:         )
+ 2162: 
+ 2163:     ext = os.path.splitext(file.filename or "")[1] or (".mp4" if slot == "video" else ".jpg")
+ 2164:     filename = f"gallery_{current_user.id}_{slot}{ext}"
+ 2165:     file_path = os.path.join(MEDIA_DIR, filename)
+ 2166: 
+ 2167:     contents = await file.read()
+ 2168:     with open(file_path, "wb") as f:
+ 2169:         f.write(contents)
+ 2170: 
+ 2171:     existing = db.query(UserMedia).filter(
+ 2172:         UserMedia.user_id == current_user.id, UserMedia.slot == slot
+ 2173:     ).first()
+ 2174:     if existing:
+ 2175:         if existing.filename != filename:
+ 2176:             old_path = os.path.join(MEDIA_DIR, existing.filename)
+ 2177:             if os.path.exists(old_path):
+ 2178:                 os.remove(old_path)
+ 2179:         existing.filename = filename
+ 2180:     else:
+ 2181:         db.add(UserMedia(user_id=current_user.id, slot=slot, filename=filename))
+ 2182:     db.commit()
+ 2183: 
+ 2184:     # Face slot doubles as the profile photo served by GET /api/users/{id}/photo.
+ 2185:     # Write a second copy into PHOTOS_DIR and upsert user_photos.
+ 2186:     if slot == "face":
+ 2187:         profile_filename = f"photoface_{current_user.id}.jpg"
+ 2188:         os.makedirs(PHOTOS_DIR, exist_ok=True)
+ 2189:         with open(os.path.join(PHOTOS_DIR, profile_filename), "wb") as f:
+ 2190:             f.write(contents)
+ 2191:         existing_photo = db.query(UserPhoto).filter(
+ 2192:             UserPhoto.user_id == current_user.id
+ 2193:         ).first()
+ 2194:         if existing_photo:
+ 2195:             existing_photo.photo_filename = profile_filename
+ 2196:         else:
+ 2197:             db.add(UserPhoto(user_id=current_user.id, photo_filename=profile_filename))
+ 2198:         db.commit()
+ 2199: 
+ 2200:     return {"status": "ok", "slot": slot, "filename": filename}
+ 2201: 
+ 2202: 
+ 2203: @router.delete("/gallery/{slot}", status_code=200)
+ 2204: async def delete_gallery_slot(
+ 2205:     slot: str,
+ 2206:     current_user: User = Depends(get_current_user),
+ 2207:     db: Session = Depends(get_db),
+ 2208: ):
+ 2209:     """Delete media for a gallery slot."""
+ 2210:     if slot not in VALID_GALLERY_SLOTS:
+ 2211:         raise HTTPException(status_code=400, detail="Invalid slot")
+ 2212: 
+ 2213:     row = db.query(UserMedia).filter(
+ 2214:         UserMedia.user_id == current_user.id, UserMedia.slot == slot
+ 2215:     ).first()
+ 2216:     if not row:
+ 2217:         raise HTTPException(status_code=404, detail="No media for this slot")
+ 2218: 
+ 2219:     file_path = os.path.join(MEDIA_DIR, row.filename)
+ 2220:     if os.path.exists(file_path):
+ 2221:         os.remove(file_path)
+ 2222: 
+ 2223:     db.delete(row)
+ 2224:     db.commit()
+ 2225:     return {"status": "ok"}
+ 2226: 
+ 2227: 
+ 2228: @router.get("/gallery/{user_id}/{slot}")
+ 2229: async def get_gallery_file(
+ 2230:     user_id: int,
+ 2231:     slot: str,
+ 2232:     current_user: User = Depends(get_current_user),
+ 2233:     db: Session = Depends(get_db),
+ 2234: ):
+ 2235:     """Serve a gallery media file (auth required)."""
+ 2236:     # IDOR FIX: Ensure users can only access their own gallery
+ 2237:     if current_user.id != user_id:
+ 2238:         raise HTTPException(
+ 2239:             status_code=403,
+ 2240:             detail="Access denied: You can only view your own gallery"
+ 2241:         )
+ 2242: 
+ 2243:     if slot not in VALID_GALLERY_SLOTS:
+ 2244:         raise HTTPException(status_code=400, detail="Invalid slot")
+ 2245: 
+ 2246:     row = db.query(UserMedia).filter(
+ 2247:         UserMedia.user_id == user_id, UserMedia.slot == slot
+ 2248:     ).first()
+ 2249:     if not row:
+ 2250:         raise HTTPException(status_code=404, detail="No media for this slot")
+ 2251: 
+ 2252:     file_path = os.path.join(MEDIA_DIR, row.filename)
+ 2253:     if not os.path.exists(file_path):
+ 2254:         raise HTTPException(status_code=404, detail="File not found")
+ 2255: 
+ 2256:     media_type = "video/mp4" if slot == "video" else "image/jpeg"
+ 2257:     return FileResponse(file_path, media_type=media_type)
+ 2258: 
+ 2259: 
+ 2260: # ── Referral system ──────────────────────────────────────────────────────────
+ 2261: 
+ 2262: class ReferrerEventCreate(BaseModel):
+ 2263:     event_name: str
+ 2264:     value: int
+ 2265:     referred_username: str
+ 2266: 
+ 2267: 
+ 2268: class ReferrerEventItem(BaseModel):
+ 2269:     event_name: str
+ 2270:     value: int
+ 2271:     referred_username: str
+ 2272:     created_at: str
+ 2273: 
+ 2274: 
+ 2275: class ReferralSummaryResponse(BaseModel):
+ 2276:     events: List[ReferrerEventItem]
+ 2277:     total_value: int
+ 2278:     total_referrals: int
+ 2279: 
+ 2280: 
+ 2281: @router.post("/referrer-events", status_code=status.HTTP_201_CREATED)
+ 2282: async def create_referrer_event(
+ 2283:     req: ReferrerEventCreate,
+ 2284:     current_user: User = Depends(get_current_user),
+ 2285:     db: Session = Depends(get_db),
+ 2286: ):
+ 2287:     """Admin-only: record a referral event. The referrer is looked up from
+ 2288:     the referred user's User.referred_by column — admin only specifies what
+ 2289:     happened, not who gets credit."""
+ 2290:     _require_admin(current_user)
+ 2291:     referred = db.query(User).filter(User.username == req.referred_username).first()
+ 2292:     if referred is None:
+ 2293:         raise HTTPException(status_code=404, detail="referred_username not found")
+ 2294:     if not referred.referred_by:
+ 2295:         raise HTTPException(
+ 2296:             status_code=400,
+ 2297:             detail="Referred user has no referrer recorded",
+ 2298:         )
+ 2299:     event = ReferrerEvent(
+ 2300:         event_name=req.event_name,
+ 2301:         value=req.value,
+ 2302:         referrer_username=referred.referred_by,
+ 2303:         referred_username=req.referred_username,
+ 2304:     )
+ 2305:     db.add(event)
+ 2306:     db.commit()
+ 2307:     db.refresh(event)
+ 2308:     return {
+ 2309:         "id": event.id,
+ 2310:         "event_name": event.event_name,
+ 2311:         "value": event.value,
+ 2312:         "referrer_username": event.referrer_username,
+ 2313:         "referred_username": event.referred_username,
+ 2314:         "created_at": event.created_at.isoformat() + "Z",
+ 2315:     }
+ 2316: 
+ 2317: 
+ 2318: @router.get("/referrals/me", response_model=ReferralSummaryResponse)
+ 2319: @router.get("/me/referral-summary", response_model=ReferralSummaryResponse)
+ 2320: async def my_referral_summary(
+ 2321:     current_user: User = Depends(get_current_user),
+ 2322:     db: Session = Depends(get_db),
+ 2323: ):
+ 2324:     """Events where the current user was the referrer. Sums value and
+ 2325:     counts distinct referred users.
+ 2326: 
+ 2327:     Exposed at two paths: /referrals/me (resource-first, FE convention)
+ 2328:     and /me/referral-summary (original M21 naming, kept for back-compat).
+ 2329:     M96 added the /referrals/me alias after the FE started calling it."""
+ 2330:     rows = (
+ 2331:         db.query(ReferrerEvent)
+ 2332:         .filter(ReferrerEvent.referrer_username == current_user.username)
+ 2333:         .order_by(ReferrerEvent.created_at.desc())
+ 2334:         .all()
+ 2335:     )
+ 2336:     events = [
+ 2337:         ReferrerEventItem(
+ 2338:             event_name=r.event_name,
+ 2339:             value=r.value,
+ 2340:             referred_username=r.referred_username,
+ 2341:             created_at=r.created_at.isoformat() + "Z",
+ 2342:         )
+ 2343:         for r in rows
+ 2344:     ]
+ 2345:     total_value = sum(r.value for r in rows)
+ 2346:     total_referrals = len({r.referred_username for r in rows})
+ 2347:     return ReferralSummaryResponse(
+ 2348:         events=events,
+ 2349:         total_value=total_value,
+ 2350:         total_referrals=total_referrals,
+ 2351:     )
+ 2352: 
+ 2353: 
+ 2354: # ── Feedback ─────────────────────────────────────────────────────────────────
+ 2355: 
+ 2356: VALID_FEEDBACK_STATUSES = {"new", "read", "resolved"}
+ 2357: 
+ 2358: 
+ 2359: def send_feedback_email(feedback_id: int):
+ 2360:     """Stub for the eventual email-out. Replace with real email integration
+ 2361:     later (e.g. SES / SendGrid / SMTP). For now just logs so the operator
+ 2362:     can grep server logs to confirm the hook fired."""
+ 2363:     print(f"[STUB] feedback {feedback_id} received, would email datetris@pm.me")
+ 2364: 
+ 2365: 
+ 2366: @router.post("/feedback", status_code=status.HTTP_201_CREATED)
+ 2367: async def submit_feedback(
+ 2368:     description: str = Form(...),
+ 2369:     app_version: str = Form(...),
+ 2370:     platform: str = Form(...),
+ 2371:     screenshot: Optional[UploadFile] = File(None),
+ 2372:     current_user: User = Depends(get_current_user),
+ 2373:     db: Session = Depends(get_db),
+ 2374: ):
+ 2375:     """User-submitted feedback with optional screenshot. Auth required."""
+ 2376:     trace_id = uuid.uuid4().hex
+ 2377:     t_start = time.time()
+ 2378:     shot_name = getattr(screenshot, "filename", None) if screenshot is not None else None
+ 2379:     shot_ct = getattr(screenshot, "content_type", None) if screenshot is not None else None
+ 2380:     logger.info(
+ 2381:         f"[feedback-submit start] trace={trace_id} user={current_user.id} "
+ 2382:         f"platform={platform!r} app_version={app_version!r} "
+ 2383:         f"desc_len={len(description)} shot={shot_name!r} ct={shot_ct!r}"
+ 2384:     )
+ 2385:     try:
+ 2386:         screenshot_path = None
+ 2387:         shot_bytes = 0
+ 2388:         if screenshot is not None and screenshot.filename:
+ 2389:             ext = os.path.splitext(screenshot.filename)[1] or ".png"
+ 2390:             filename = f"feedback_{uuid.uuid4().hex}{ext}"
+ 2391:             path = os.path.join(FEEDBACK_SCREENSHOTS_DIR, filename)
+ 2392:             contents = await screenshot.read()
+ 2393:             shot_bytes = len(contents)
+ 2394:             with open(path, "wb") as f:
+ 2395:                 f.write(contents)
+ 2396:             # Store just the filename, not the absolute path — the admin
+ 2397:             # serve endpoint joins it with FEEDBACK_SCREENSHOTS_DIR at read time.
+ 2398:             screenshot_path = filename
+ 2399: 
+ 2400:         fb = Feedback(
+ 2401:             user_id=current_user.id,
+ 2402:             description=description,
+ 2403:             screenshot_path=screenshot_path,
+ 2404:             app_version=app_version,
+ 2405:             platform=platform,
+ 2406:         )
+ 2407:         db.add(fb)
+ 2408:         db.commit()
+ 2409:         db.refresh(fb)
+ 2410: 
+ 2411:         send_feedback_email(fb.id)
+ 2412: 
+ 2413:         dur_ms = int((time.time() - t_start) * 1000)
+ 2414:         logger.info(
+ 2415:             f"[feedback-submit done] trace={trace_id} user={current_user.id} "
+ 2416:             f"feedback_id={fb.id} shot_bytes={shot_bytes} dur_ms={dur_ms}"
+ 2417:         )
+ 2418: 
+ 2419:         return {"success": True, "feedback_id": fb.id}
+ 2420:     except HTTPException:
+ 2421:         raise
+ 2422:     except Exception:
+ 2423:         tb = traceback.format_exc()
+ 2424:         dur_ms = int((time.time() - t_start) * 1000)
+ 2425:         logger.error(
+ 2426:             f"[feedback-submit FAIL] trace={trace_id} user={current_user.id} "
+ 2427:             f"platform={platform!r} app_version={app_version!r} "
+ 2428:             f"desc_len={len(description)} shot={shot_name!r} ct={shot_ct!r} "
+ 2429:             f"dur_ms={dur_ms}\n{tb}"
+ 2430:         )
+ 2431:         raise HTTPException(
+ 2432:             status_code=500,
+ 2433:             detail={"detail": "Internal error", "trace_id": trace_id},
+ 2434:         )
+ 2435: 
+ 2436: 
+ 2437: class FeedbackItem(BaseModel):
+ 2438:     id: int
+ 2439:     user_id: Optional[int]
+ 2440:     username: Optional[str]
+ 2441:     description: str
+ 2442:     screenshot_path: Optional[str]
+ 2443:     app_version: str
+ 2444:     platform: str
+ 2445:     status: str
+ 2446:     created_at: str
+ 2447: 
+ 2448: 
+ 2449: class FeedbackListResponse(BaseModel):
+ 2450:     items: List[FeedbackItem]
+ 2451:     total: int
+ 2452: 
+ 2453: 
+ 2454: class FeedbackPatchRequest(BaseModel):
+ 2455:     status: Optional[str] = None
+ 2456: 
+ 2457: 
+ 2458: @router.get("/admin/feedback", response_model=FeedbackListResponse)
+ 2459: async def admin_list_feedback(
+ 2460:     page: int = 1,
+ 2461:     per_page: int = 50,
+ 2462:     current_user: User = Depends(get_current_user),
+ 2463:     db: Session = Depends(get_db),
+ 2464: ):
+ 2465:     """Admin-only: list all feedback, newest first."""
+ 2466:     _require_admin(current_user)
+ 2467:     base = db.query(Feedback).order_by(Feedback.created_at.desc())
+ 2468:     total = base.count()
+ 2469:     rows = base.offset((page - 1) * per_page).limit(per_page).all()
+ 2470:     user_ids = {r.user_id for r in rows if r.user_id is not None}
+ 2471:     username_by_id = {}
+ 2472:     if user_ids:
+ 2473:         for uid, uname in db.query(User.id, User.username).filter(User.id.in_(user_ids)).all():
+ 2474:             username_by_id[uid] = uname
+ 2475:     items = [
+ 2476:         FeedbackItem(
+ 2477:             id=r.id,
+ 2478:             user_id=r.user_id,
+ 2479:             username=username_by_id.get(r.user_id) if r.user_id else None,
+ 2480:             description=r.description,
+ 2481:             screenshot_path=r.screenshot_path,
+ 2482:             app_version=r.app_version,
+ 2483:             platform=r.platform,
+ 2484:             status=r.status,
+ 2485:             created_at=r.created_at.isoformat() + "Z",
+ 2486:         )
+ 2487:         for r in rows
+ 2488:     ]
+ 2489:     return FeedbackListResponse(items=items, total=total)
+ 2490: 
+ 2491: 
+ 2492: @router.patch("/admin/feedback/{feedback_id}")
+ 2493: async def admin_patch_feedback(
+ 2494:     feedback_id: int,
+ 2495:     req: FeedbackPatchRequest,
+ 2496:     current_user: User = Depends(get_current_user),
+ 2497:     db: Session = Depends(get_db),
+ 2498: ):
+ 2499:     """Admin-only: update feedback status (new → read → resolved)."""
+ 2500:     _require_admin(current_user)
+ 2501:     fb = db.query(Feedback).filter(Feedback.id == feedback_id).first()
+ 2502:     if fb is None:
+ 2503:         raise HTTPException(status_code=404, detail="Feedback not found")
+ 2504:     if req.status is not None:
+ 2505:         _validate_enum(req.status, VALID_FEEDBACK_STATUSES, "status")
+ 2506:         fb.status = req.status
+ 2507:     db.commit()
+ 2508:     db.refresh(fb)
+ 2509:     return {"id": fb.id, "status": fb.status}
+ 2510: 
+ 2511: 
+ 2512: @router.get("/admin/feedback/{feedback_id}/screenshot")
+ 2513: async def admin_feedback_screenshot(
+ 2514:     feedback_id: int,
+ 2515:     current_user: User = Depends(get_current_user),
+ 2516:     db: Session = Depends(get_db),
+ 2517: ):
+ 2518:     """Admin-only: serve the screenshot file for a feedback row."""
+ 2519:     _require_admin(current_user)
+ 2520:     fb = db.query(Feedback).filter(Feedback.id == feedback_id).first()
+ 2521:     if fb is None:
+ 2522:         raise HTTPException(status_code=404, detail="Feedback not found")
+ 2523:     if not fb.screenshot_path:
+ 2524:         raise HTTPException(status_code=404, detail="No screenshot for this feedback")
+ 2525:     file_path = os.path.join(FEEDBACK_SCREENSHOTS_DIR, fb.screenshot_path)
+ 2526:     if not os.path.exists(file_path):
+ 2527:         raise HTTPException(status_code=404, detail="Screenshot file missing on disk")
+ 2528:     # Most screenshots will be PNG/JPEG; use generic image/* and let the
+ 2529:     # client / browser sniff. Could be tightened by storing the original
+ 2530:     # mime-type alongside the path if needed.
+ 2531:     ext = os.path.splitext(fb.screenshot_path)[1].lower()
+ 2532:     media_type = "image/png" if ext == ".png" else "image/jpeg"
+ 2533:     return FileResponse(file_path, media_type=media_type)
