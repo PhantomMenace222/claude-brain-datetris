@@ -1,7 +1,7 @@
-- [Reply separator](feedback_reply_separator.md) — start every reply with a blank line + `---` separator
-- [Message numbering](feedback_message_numbering.md) — echo the `[MN]` prefix from the prompt as the first token after the separator
+- [Reply format](feedback_reply_format.md) — `---` separator, opening `[MN]` after separator, closing `[MN]` on the last line of every reply
 - [Fix-branch git workflow](feedback_git_workflow.md) — every change goes through `fix/<desc>` → `development` → (on App Store submit) `main` + tag; HARD RULE requires double confirmation on `main` writes
 - [Push after every commit](feedback_push_every_commit.md) — fix branches push to origin on every commit (Mac-death insurance)
+- [Optimization-first by default](feedback_optimization_first.md) — lead recommendations with the efficient option, not the easiest; tradeoffs stay visible
 - [Banner / pubspec versioning](feedback_versioning.md) — banner is `YYYY-MM-DD(X)` on dev, `YYYY-MM-DD(X.Y)` on fix branches; pubspec `+X` only bumps at IPA build time
 - [Banner workflow after IPA upload](feedback_banner_workflow.md) — after IPA N uploaded, next fix branch = (N+1).1; current X = 105
 - [Session wrap 2026-04-22](project_session_wrap_2026-04-22.md) — prod infra live (api.datetris.date on 167.71.136.223), today's shipped work, pending for next session (IPA +3 build, proper profile-photo flow, re-enable gallery slots + Dating Speed)

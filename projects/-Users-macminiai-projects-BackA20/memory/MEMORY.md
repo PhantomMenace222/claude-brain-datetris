@@ -1,6 +1,5 @@
 - [Test account credentials](test_credentials.md) — default backend smoke-test login is happysammy / 111111111111
-- [Reply separator formatting](reply_separator.md) — prepend `---` to every reply
-- [Message numbering](feedback_message_numbering.md) — user prefixes prompts with `[MN]`; reply starts with same `[MN]` tag (before the `---` separator)
+- [Reply format (separator + bracketed tags)](feedback_reply_format.md) — every reply: `---` then `[MN]` at top, `[MN]` again at bottom (supersedes prior reply_separator + message_numbering rules)
 - [Fix-branch git workflow](feedback_git_workflow.md) — every change goes through `fix/<desc>` → `development` → (on FE App Store submit) `main` + tag
 - [Push fix branches on every commit](feedback_push_fix_branches.md) — `git push origin fix/<desc>` after every commit; not just at merge time (matches FE repo rule)
 - [Git workflow exceptions](feedback_git_workflow_exceptions.md) — if fix branch is lost mid-session and commit lands on development, push as-is; do not rewrite history
